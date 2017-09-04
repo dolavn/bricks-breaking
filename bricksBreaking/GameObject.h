@@ -146,7 +146,8 @@ private:
 	Point location; //The location of this gameObject
 	/*
 	The shapes list of this gameObject. A list of shapes to be drawn 
-	when this object's draw function is called.
+	when this object's draw function is called. Each object in this list is a pair
+	of the shape, and the index of this shape in the graphics object.
 	*/
 	std::vector<std::pair<Shape*, int>> shapesList;
 	Physics::Vector *velocity; //The velocity of this gameObject

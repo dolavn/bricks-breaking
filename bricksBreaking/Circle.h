@@ -39,6 +39,9 @@ public:
 
 	/*
 		Assignment operator, used to deep copy an existing circle to this one.
+
+		@param other The other rectangle to be deep copied from.
+		@returns A reference to the rectangle after the copy
 	*/
 	Circle& operator=(const Circle& other);
 

@@ -46,7 +46,7 @@ public:
 	Circle& operator=(const Circle& other);
 
 	/*
-		Destructor for this circle object.
+		Destructs this circle object.
 	*/
 	virtual ~Circle();
 

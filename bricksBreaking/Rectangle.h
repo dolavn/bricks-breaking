@@ -40,7 +40,7 @@ public:
 	Rectangle& operator=(const Rectangle& other);
 
 	/*
-		Destructor for this circle object.
+		Destructs this rectangle object.
 	*/
 	virtual ~Rectangle();
 

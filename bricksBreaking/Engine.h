@@ -7,33 +7,58 @@
 #include <sstream>
 #include <stdint.h>
 #include <vector>
+
+
+const int TARGET_FPS = 50; //The desired frame per seconds rate
+const int TIMER_CYCLE = 25; //The cycle of the timer, in milliseconds
+
 /*
-This is the main game engine, it handles the graphics,
-user input, and all the game objects.
+	This is the main game engine, it handles the graphics,
+	user input, and all the game objects.
+
+	@author Dolav Nitay
+	@version 1.0
 */
-
-const int TARGET_FPS = 50;
-const int TIMER_CYCLE = 25;
-
 class Engine {
 public:
+	/**
+		A constructor for the game engine, creates the engine.
+	*/
 	Engine();
+
+	/**
+		Destructor for the game engine
+	*/
 	virtual ~Engine();
+
+	/**
+		Starts the game
+	*/
 	void startGame();
+	/**
+		Moves all the game objects
+	*/
 	void moveObj();
-	void addObject(GameObject& objj);
+
+	/**
+		Adds a new GameObject to the game
+
+		@param obj The new GameObject to be added
+	*/
+	void addObject(GameObject& obj);
 private:
-	SDL_mutex *lock;
-	std::vector<GameObject*> gameObjects;
-	void runGame();
-	void onEvent(SDL_Event* Event);
-	static Uint32 timerCallBack(Uint32 interval, void *param);
-	bool running;
-	Graphics graphics;
-	SDL_TimerID timerId;
-	void printTimes(int c);
-	int timeTxt;
-	/*Integers used to measure how much computation time takes each action.*/
+	SDL_mutex *lock; //A lock for synchronizing access to the game objects vector
+	std::vector<GameObject*> gameObjects; //The game objects vector
+	void runGame(); //Runs the game
+	void onEvent(SDL_Event* Event); //handles sdl event
+	static Uint32 timerCallBack(Uint32 interval, void *param); //Call back function to be called each timer cycle
+	bool running; //True if and only if the game is running
+	Graphics graphics; //The graphics engine of the game
+	SDL_TimerID timerId; //The main game timer
+	void printTimes(int c);  //Print all the times calculated
+	int timeTxt; //The index in which the Text shape which shows the fps, is stored in the graphics engine
+
+	/*****Integers used to measure how much computation time takes each action.*****/
 	int count = 0;
 	int move = 0;
 	int drawRun = 0;
@@ -41,4 +66,5 @@ private:
 	int runAvg = 0;
 	int rendAvg = 0;
 	int avgFps = 0;
+	/*****End of time computation integers*****/
 };

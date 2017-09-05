@@ -1,4 +1,4 @@
-/*
+/**
 	A class which derives from GameObject.
 	The moving ball of the game.
 
@@ -14,7 +14,7 @@
 
 class Ball :public GameObject {
 public:
-	/*
+	/**
 		Constructs a new Ball object
 
 		@param x The x coordinate of the ball.
@@ -22,28 +22,28 @@ public:
 	*/
 	Ball(int x, int y); 
 
-	/*
+	/**
 		Deep copies an existing Ball object
 
 		@param other The other Ball object.
 	*/
 	Ball(const Ball& other);
 
-	/*
+	/**
 		An assignment operator, returns a deep copied copy
 		of another ball.
 
 		@param other The other ball object.
-		@returns A deep copied copy of the other ball.
+		@return A deep copied copy of the other ball.
 	*/
 	Ball& operator=(const Ball& other);
 
-	/*
+	/**
 		Destroys this ball object.
 	*/
 	virtual ~Ball();
 
-	/*
+	/**
 		Returns a pointer to a copy of this ball object.
 
 		@return A pointer to a copy of this ball object.

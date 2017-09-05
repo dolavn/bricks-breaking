@@ -1,6 +1,7 @@
-#pragma once
-
 #include <SDL.h>
+
+#ifndef COLOR_H_
+#define COLOR_H_
 
 class Color {
 public:
@@ -26,4 +27,6 @@ namespace Colors {
 	const Color PURPLE = Color(255, 0, 255);
 	const Color BLACK = Color(0, 0, 0);
 }
+
+#endif
 

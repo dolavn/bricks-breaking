@@ -1,8 +1,8 @@
-/*
-This class represents the rectangle shape. It derives from the class Shape.
+/**
+	This class represents the rectangle shape. It derives from the class Shape.
 
-@author Dolav Nitay
-@version 1.0
+	@author Dolav Nitay
+	@version 1.0
 */
 
 #include "Shape.h"
@@ -13,7 +13,7 @@ This class represents the rectangle shape. It derives from the class Shape.
 
 class Rectangle :public Shape {
 public:
-	/*
+	/**
 		Constructs a new Rectangle.
 
 		@param x The x coordinate of the top left corner of the rectangle.
@@ -24,42 +24,42 @@ public:
 	*/
 	Rectangle(int x, int y, int width, int height, Color color);
 
-	/*
+	/**
 		Deep copies an existing rectangle.
 
 		@param other The other rectangle to be deep copied from.
 	*/
 	Rectangle(const Rectangle& other);
 
-	/*
+	/**
 		Assignment operator, used to deep copy an existing rectangle to this one.
 
 		@param other The other rectangle to be deep copied from.
-		@returns A reference to the rectangle after the copy.
+		@return A reference to the rectangle after the copy.
 	*/
 	Rectangle& operator=(const Rectangle& other);
 
-	/*
+	/**
 		Destructs this rectangle object.
 	*/
 	virtual ~Rectangle();
 
-	/*
+	/**
 		Draws this circle using an SDL_Renderer
 	*/
 	virtual void draw(SDL_Renderer &renderer);
 
-	/*
+	/**
 		Returns a pointer to a clone of this rectangle.
 
-		@returns A pointer to a clone of this rectangle.
+		@return A pointer to a clone of this rectangle.
 	*/
 	virtual Shape* clone() const;
 
-	/*
+	/**
 		Returns a string representation of this rectangle.
 
-		@returns A string representation of this rectangle.
+		@return A string representation of this rectangle.
 	*/
 	virtual std::string toString() const;
 private:

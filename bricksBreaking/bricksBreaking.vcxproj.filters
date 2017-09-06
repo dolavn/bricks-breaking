@@ -143,5 +143,8 @@
     <ClCompile Include="Ball.cpp">
       <Filter>Resource Files\Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Resource Files\Source Files\Graphics\Shapes</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

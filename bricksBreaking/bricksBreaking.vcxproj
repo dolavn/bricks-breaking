@@ -173,6 +173,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Rectangle.cpp" />

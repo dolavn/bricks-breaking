@@ -96,6 +96,9 @@
     <ClInclude Include="Event.h">
       <Filter>Header Files\Game\Observer</Filter>
     </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Header Files\Graphics\Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

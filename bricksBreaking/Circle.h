@@ -29,14 +29,12 @@ public:
 		@param c The color of the circle.
 	*/
 	Circle(int x, int y, int radius, Color c);
-
 	/**
 		Deep copies an existing circle.
 
 		@param other The other circle to be deep copied from.
 	*/
 	Circle(const Circle& other);
-
 	/**
 		Assignment operator, used to deep copy an existing circle to this one.
 
@@ -44,17 +42,14 @@ public:
 		@return A reference to the rectangle after the copy
 	*/
 	Circle& operator=(const Circle& other);
-
 	/**
 		Destructs this circle object.
 	*/
 	virtual ~Circle();
-
 	/**
 		Draws this circle using an SDL_Renderer
 	*/
 	void draw(SDL_Renderer& renderer);
-
 	/**
 		Sets the center of this circle.
 
@@ -62,21 +57,18 @@ public:
 		@param y The new y coordinate of the center of this circle.
 	*/
 	void setCenter(int x, int y);
-
 	/**
 		Returns the x coordinate of the center of this circle.
 
 		@return The x coordinate of the center of this circle.
 	*/
 	int getX();
-
 	/**
 		Returns a pointer to a clone of this circle.
 
 		@return A pointer to a clone of this circle.
 	*/
 	virtual Shape* clone() const;
-
 	/**
 		Returns a string representation of this circle.
 
@@ -101,12 +93,10 @@ private:
 		@return The angle in units of radians.
 	*/
 	double getRadians(double angle);
-
 	/**
 		Initializes this circle.
 	*/
 	void init();
-
 	/**
 		Computes the distance between two points.
 

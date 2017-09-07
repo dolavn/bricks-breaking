@@ -99,6 +99,9 @@
     <ClInclude Include="Image.h">
       <Filter>Header Files\Graphics\Shapes</Filter>
     </ClInclude>
+    <ClInclude Include="ImageTexture.h">
+      <Filter>Header Files\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -145,6 +148,9 @@
     </ClCompile>
     <ClCompile Include="Image.cpp">
       <Filter>Resource Files\Source Files\Graphics\Shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="ImageTexture.cpp">
+      <Filter>Resource Files\Source Files\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

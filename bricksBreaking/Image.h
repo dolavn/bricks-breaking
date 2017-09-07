@@ -1,4 +1,5 @@
 #include "Shape.h"
+#include "ImageSurface.h"
 
 #include <string>
 #include <SDL.h>
@@ -21,7 +22,7 @@ public:
 		@param x The x coordinate of the image
 		@param y The y coordinate of the image
 	*/
-	Image(std::string filePath,int x,int y);
+	Image(ImageSurface& surface,int x,int y);
 	/**
 		Copy constructor, deep copies an existing Image object.
 
@@ -46,11 +47,13 @@ public:
 	*/
 	virtual void draw(SDL_Renderer& renderer);
 private:
-	std::string filePath;
+	ImageSurface& surface;
 	int x;
 	int y;
-	SDL_Texture* texture;
 
+	/**
+		Initializes this image
+	*/
 	void init();
 };
 

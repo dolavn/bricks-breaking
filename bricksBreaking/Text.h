@@ -24,7 +24,6 @@ public:
 		@param color The color of the text.
 	*/
 	Text(int x, int y, std::string text, Color color);
-
 	/**
 		Constructs a new text object, also accepts its size as a parameter.
 
@@ -34,14 +33,12 @@ public:
 		@param color The color of the text.
 	*/
 	Text(int x, int y, std::string text, Color color, int size);
-
 	/**
 		Deep copies an existing text object.
 
 		@param other The other text objet.
 	*/
 	Text(const Text& other);
-
 	/**
 		Assignment operator, used to deep copy an existing text object to this one.
 
@@ -49,24 +46,22 @@ public:
 		@return A reference to the text after the copy
 	*/
 	Text& operator=(const Text& other);
-
 	/**
 		Destructs this text object.
 	*/
 	virtual ~Text();
-
 	/**
-		Draws this circle using an SDL_Renderer
-	*/
-	virtual void draw(SDL_Renderer &renderer);
+		Draws this circle to the screen.
 
+		@param graphics The graphics used to draw the shape.
+	*/
+	virtual void draw(Graphics& graphics);
 	/**
 		Returns a pointer to a clone of this text object.
 
 		@return A pointer to a clone of this text object.
 	*/
 	virtual Shape* clone() const;
-
 	/**
 		Returns a string representation of this text object.
 

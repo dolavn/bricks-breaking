@@ -50,7 +50,8 @@ Shape* Circle::clone() const{
 }
 
 //Draws this circle using an SDL_Renderer
-void Circle::draw(SDL_Renderer& renderer) {
+void Circle::draw(Graphics& graphics) {
+	SDL_Renderer& renderer = graphics.getRenderer();
 	Color color = getColor();
 	SDL_SetRenderDrawColor(&renderer,color.getRed(), color.getGreen(), color.getBlue(), 255); //Sets the render draw color.
 	for (unsigned int i = 0; i < lines.size(); i = i + 1) { //Draws all the lines that make up the circle.

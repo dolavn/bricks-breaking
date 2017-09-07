@@ -6,9 +6,10 @@
 #include <iostream>
 
 //Constructs the graphics engine of the game.
-Graphics::Graphics(int width,int height):width(width),height(height) {
+Graphics::Graphics(int width, int height) :width(width), height(height) {
 	drawList = new std::vector<Shape*>();
 	freeIndexes = std::vector<int>();
+	textures = std::vector<ImageTexture*>();
 	lock = SDL_CreateMutex();
 }
 
@@ -16,6 +17,8 @@ Graphics::Graphics(int width,int height):width(width),height(height) {
 Graphics::~Graphics() {
 	for (unsigned int i = 0; i < drawList->size(); i++)
 		delete((*drawList)[i]);
+	for (unsigned int i = 0; i < textures.size(); i++)
+		delete(textures[i]);
 	delete(drawList);
 	SDL_DestroyMutex(lock);
 	SDL_DestroyRenderer(renderer);
@@ -30,6 +33,10 @@ bool Graphics::init() {
 	window = SDL_CreateWindow("Bricks breaking", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, SDL_WINDOW_SHOWN);
 	renderer = SDL_CreateRenderer(window, -1, 0);
 	surface = SDL_GetWindowSurface(window);
+	viewPort.x = 0;
+	viewPort.y = 0;
+	viewPort.w = width;
+	viewPort.h = height;
 	return true;
 }
 
@@ -42,7 +49,8 @@ void Graphics::draw() {
 	for (unsigned int i = 0; i < drawList->size(); i++) {
 		if ((*drawList)[i] != nullptr) { //The current shape wasn't deleted
 			Shape& currShape = *(*drawList)[i];
-			currShape.draw(*renderer); //Draws the shape using the renderer
+			currShape.draw(*this); //Draws the shape using the renderer
+			SDL_RenderSetViewport(renderer, &viewPort);
 		}
 	}
 	SDL_UnlockMutex(lock); //Releases the lock
@@ -57,8 +65,8 @@ void Graphics::render() {
 int Graphics::addShape(Shape& shape) {
 	SDL_LockMutex(lock); //Acquires the lock to access the shapes vector
 	Shape* insert = shape.clone(); //clones the shape
-	int ans=0;
-	if (freeIndexes.size() == 0){ //There are no free indexes in the shapes vector
+	int ans = 0;
+	if (freeIndexes.size() == 0) { //There are no free indexes in the shapes vector
 		drawList->push_back(insert);
 		ans = drawList->size() - 1;
 	}
@@ -74,9 +82,26 @@ int Graphics::addShape(Shape& shape) {
 //Removes a shape
 void Graphics::removeShape(int index) {
 	SDL_LockMutex(lock); //Acquires the lock to access the shapes vector
-	Shape* curr = (*drawList)[index]; 
+	Shape* curr = (*drawList)[index];
 	delete(curr); //Frees the memory held by this shape
 	(*drawList)[index] = nullptr;
 	freeIndexes.push_back(index); //Adds the index from which the shape was deleted to the free indexes list
 	SDL_UnlockMutex(lock); //Releases the lock
+}
+
+//Returns an image texture for a specific path
+ImageTexture* Graphics::getTexture(std::string path) {
+	for (unsigned int i = 0; i < textures.size(); i++) { //Checks if this image was already loaded
+		if (path == textures[i]->getPath()){
+			return textures[i];
+		}
+	}
+	ImageTexture* newTexture = new ImageTexture(path, *renderer); //If this image wasn't loaded yet, loads it.
+	textures.push_back(newTexture);
+	return newTexture;
+}
+
+//A getter for the renderer
+SDL_Renderer& Graphics::getRenderer() const {
+	return *renderer;
 }

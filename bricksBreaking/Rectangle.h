@@ -23,14 +23,12 @@ public:
 		@param color The color of the rectangle.
 	*/
 	Rectangle(int x, int y, int width, int height, Color color);
-
 	/**
 		Deep copies an existing rectangle.
 
 		@param other The other rectangle to be deep copied from.
 	*/
 	Rectangle(const Rectangle& other);
-
 	/**
 		Assignment operator, used to deep copy an existing rectangle to this one.
 
@@ -38,24 +36,22 @@ public:
 		@return A reference to the rectangle after the copy.
 	*/
 	Rectangle& operator=(const Rectangle& other);
-
 	/**
 		Destructs this rectangle object.
 	*/
 	virtual ~Rectangle();
-
 	/**
-		Draws this circle using an SDL_Renderer
-	*/
-	virtual void draw(SDL_Renderer &renderer);
+		Draws this circle to the screen.
 
+		@param graphics The graphics used to draw the shape.
+	*/
+	virtual void draw(Graphics& graphics);
 	/**
 		Returns a pointer to a clone of this rectangle.
 
 		@return A pointer to a clone of this rectangle.
 	*/
 	virtual Shape* clone() const;
-
 	/**
 		Returns a string representation of this rectangle.
 

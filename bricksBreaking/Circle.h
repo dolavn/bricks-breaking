@@ -11,6 +11,7 @@
 #include <string>
 #include <vector>
 
+
 #ifndef CIRCLE_H_
 #define CIRCLE_H_
 
@@ -49,7 +50,7 @@ public:
 	/**
 		Draws this circle using an SDL_Renderer
 	*/
-	void draw(SDL_Renderer& renderer);
+	void draw(Graphics& graphics);
 	/**
 		Sets the center of this circle.
 

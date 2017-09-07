@@ -1,5 +1,5 @@
 #include "Shape.h"
-#include "ImageSurface.h"
+#include "ImageTexture.h"
 
 #include <string>
 #include <SDL.h>
@@ -22,7 +22,7 @@ public:
 		@param x The x coordinate of the image
 		@param y The y coordinate of the image
 	*/
-	Image(ImageSurface& surface,int x,int y);
+	Image(std::string filepath,int x,int y);
 	/**
 		Copy constructor, deep copies an existing Image object.
 
@@ -30,10 +30,11 @@ public:
 	*/
 	Image(const Image& other);
 	/**
-		Assignment operator, returns a reference to a deep copied copy of another image.
+		Assignment operator, because image is an immutable object, this function will throw an exception
+		when called.
 
 		@param other The other image
-		@return A reference to a deep copied copy of another image
+		@throw Can't modify an immutable object
 	*/
 	Image& operator=(const Image& other);
 	/**
@@ -41,20 +42,28 @@ public:
 	*/
 	virtual ~Image();
 	/**
-		Draws the image to the screen using an SDL_Renderer
+		Draws the image to the screen.
 
-		@param renderer The SDL_Renderer used to render the image
+		@param graphics The graphics used to draw the shape.
 	*/
-	virtual void draw(SDL_Renderer& renderer);
-private:
-	ImageSurface& surface;
-	int x;
-	int y;
-
+	virtual void draw(Graphics& graphics);
 	/**
-		Initializes this image
+		Returns a pointer to a deep copied copy of this image.
+
+		@return A pointer to a deep copied copy of this image.
 	*/
-	void init();
+	virtual Shape* clone() const;
+	/**
+		Returns a string representation of this shape.
+
+		@return A string representation of this shape.
+	*/
+	virtual std::string toString() const;
+private:
+	ImageTexture* texture;
+	const std::string filePath;
+	const int x;
+	const int y;
 };
 
 #endif

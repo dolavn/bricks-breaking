@@ -73,7 +73,8 @@ Shape* Text::clone() const{
 }
 
 //Draws this text to the screen using the renderer
-void Text::draw(SDL_Renderer &renderer) {
+void Text::draw(Graphics& graphics) {
+	SDL_Renderer& renderer = graphics.getRenderer();
 	int mWidth = textSurface->w;  //The width of the text surface
 	int mHeight = textSurface->h; //The height of the text surface
 	mTexture = SDL_CreateTextureFromSurface(&renderer, textSurface); //Creates the texture containing the text

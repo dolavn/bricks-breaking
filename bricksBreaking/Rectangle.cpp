@@ -41,7 +41,8 @@ Shape* Rectangle::clone() const{
 }
 
 //Draws this rectangle to the screen using a renderer.
-void Rectangle::draw(SDL_Renderer &renderer) {
+void Rectangle::draw(Graphics& graphics) {
+	SDL_Renderer& renderer = graphics.getRenderer();
 	Color color = getColor();
 	SDL_SetRenderDrawColor(&renderer, color.getRed(), color.getGreen(), color.getBlue(), 255); //Sets the render color.
 	SDL_Rect p = { x,y,x + width,y + height };

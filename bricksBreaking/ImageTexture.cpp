@@ -34,12 +34,10 @@ void ImageTexture::init(SDL_Renderer& renderer) {
 	if (!(IMG_Init(imgFlags) & imgFlags)) { //Initializes SDL_Image
 		throw std::exception("Unable to initialize SDL_Image");
 	}
-	std::cout << path << std::endl;
 	SDL_Surface * loadedSurface = IMG_Load(path.c_str()); //The loaded image surface
 	if (loadedSurface == nullptr) {
 		throw std::exception("Unable to load image file");
 	}
-	std::cout << loadedSurface->w << std::endl;
 	texture = SDL_CreateTextureFromSurface(&renderer, loadedSurface); //Creates the texture from the surface
 	width = loadedSurface->w; //Saves the image dimensions
 	height = loadedSurface->h;

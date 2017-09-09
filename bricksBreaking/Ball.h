@@ -21,14 +21,12 @@ public:
 		@param y The y coordinate of the ball.
 	*/
 	Ball(int x, int y); 
-
 	/**
 		Deep copies an existing Ball object
 
 		@param other The other Ball object.
 	*/
 	Ball(const Ball& other);
-
 	/**
 		An assignment operator, returns a deep copied copy
 		of another ball.
@@ -37,12 +35,10 @@ public:
 		@return A deep copied copy of the other ball.
 	*/
 	Ball& operator=(const Ball& other);
-
 	/**
 		Destroys this ball object.
 	*/
 	virtual ~Ball();
-
 	/**
 		Returns a pointer to a copy of this ball object.
 

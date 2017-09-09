@@ -36,8 +36,8 @@ GameObject* Ball::clone() {
 
 void Ball::moveObject() {
 	//Updates the location of the shape of the ball to it's new location.
-	/*Circle& c = static_cast<Circle&>(getShape(spriteIndex));
-	c.setCenter(getLocation().getX(), getLocation().getY());*/
+	//Circle& c = static_cast<Circle&>(getShape(spriteIndex));
+	//c.setCenter(getLocation().getX(), getLocation().getY());
 	clearShapes();
 	spriteIndex = addShape(Image("ball.png", getLocation().getX(), getLocation().getY()));
 }

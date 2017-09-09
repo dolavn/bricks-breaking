@@ -1,8 +1,3 @@
-/** \file Observer.h
-* The file containing the observer class.
-*/
-
-
 #include <vector>
 #include "Event.h"
 
@@ -23,14 +18,12 @@ public:
 		Creates a new empty Event object.
 	*/
 	Observer(); 
-
 	/**
 		Deep copies an existing Observer object
 
 		@param other The other observer object.
 	*/
 	Observer(const Observer& other); 
-
 	/**
 		An assignment operator, returns a deep copied copy
 		of another observer.
@@ -38,12 +31,10 @@ public:
 		@return A deep copied copy of the other observer.
 	*/
 	Observer& operator=(const Observer& other); 
-
 	/**
 	Destroys this event object.
 	*/
 	virtual ~Observer(); 
-
 	/**
 		This function is used to report an event to the observer.
 

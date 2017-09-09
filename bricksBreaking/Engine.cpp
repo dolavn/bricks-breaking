@@ -11,6 +11,7 @@ Engine::Engine():graphics(640,480) {
 	graphics.addShape(Rectangle(10, 10, 50, 10, Colors::ORANGE));
 	timeTxt = graphics.addShape(Text(10, 50, "0", Colors::YELLOW));
 	addObject(Ball(100,200));
+	addObject(Ball(100, 400));
 	lock = SDL_CreateMutex();
 }
 

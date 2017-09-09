@@ -82,10 +82,12 @@ int Graphics::addShape(Shape& shape) {
 //Removes a shape
 void Graphics::removeShape(int index) {
 	SDL_LockMutex(lock); //Acquires the lock to access the shapes vector
-	Shape* curr = (*drawList)[index];
-	delete(curr); //Frees the memory held by this shape
-	(*drawList)[index] = nullptr;
-	freeIndexes.push_back(index); //Adds the index from which the shape was deleted to the free indexes list
+	if (index < drawList->size()) {
+		Shape* curr = (*drawList)[index];
+		delete(curr); //Frees the memory held by this shape
+		(*drawList)[index] = nullptr;
+		freeIndexes.push_back(index); //Adds the index from which the shape was deleted to the free indexes list
+	}
 	SDL_UnlockMutex(lock); //Releases the lock
 }
 

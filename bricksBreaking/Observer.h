@@ -4,12 +4,14 @@
 #ifndef OBSERVER_H_
 #define OBSERVER_H_
 
+
 /**
 	The observer class is tasked with handling all the events in the game.
 	Each event that happened is reported to the Observer,
 	which in turn activates each one of them.
 
 	@author Dolav Nitay
+	@author Tal Lavon
 	@version 1.0
 */
 class Observer {
@@ -41,8 +43,14 @@ public:
 		@param event The event being reported.
 	*/
 	void notifyEvent(Game::Event& event); 
+
+	/**
+		Handles all the events reported to this observer.
+	*/
+	void handleEvents();
 private:
 	std::vector<Game::Event*> events; //A vector of all the events in the game.
+	void clear(); //Clears the memory
 };
 
 #endif

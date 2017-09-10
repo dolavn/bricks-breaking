@@ -75,6 +75,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\sdl2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\sdl2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -150,8 +152,6 @@
   <ItemGroup>
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Circle.h" />
-    <ClInclude Include="Collidable.h" />
-    <ClInclude Include="CollisionDetector.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="GameObject.h" />
@@ -159,7 +159,6 @@
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageTexture.h" />
-    <ClInclude Include="Line.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Rectangle.h" />
@@ -174,13 +173,12 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="bricksBreaking.cpp" />
     <ClCompile Include="Circle.cpp" />
-    <ClCompile Include="Collidable.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageTexture.cpp" />
-    <ClCompile Include="Line.cpp" />
+    <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Rectangle.cpp" />

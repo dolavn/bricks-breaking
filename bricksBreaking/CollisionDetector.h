@@ -5,6 +5,13 @@
 #ifndef COLLISION_DETECTOR_H_
 #define COLLISION_DETECTOR_H_
 
+/**
+	This class is tasked with detecting collisions, and reporting them
+	to the observer class.
+
+	@author Dolav Nitay
+	@version 1.0
+*/
 class CollisionDetector {
 public:
 	/**

@@ -43,7 +43,13 @@ namespace Game {
 		/**
 			Activates this event, a pure virtual function.
 		*/
-		virtual void act() = 0; 
+		virtual void handle() = 0; 
+
+		/**
+		
+		*/
+		virtual Event* clone() = 0;
+
 	private:
 	};
 }

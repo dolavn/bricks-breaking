@@ -102,6 +102,15 @@
     <ClInclude Include="ImageTexture.h">
       <Filter>Header Files\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="Collidable.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionDetector.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>Header Files\Physics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -151,6 +160,12 @@
     </ClCompile>
     <ClCompile Include="ImageTexture.cpp">
       <Filter>Resource Files\Source Files\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Collidable.cpp">
+      <Filter>Resource Files\Source Files\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Resource Files\Source Files\Physics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

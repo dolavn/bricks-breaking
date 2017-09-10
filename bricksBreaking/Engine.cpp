@@ -6,7 +6,7 @@
 #include <iostream>
 
 //Constructs a game engine object.
-Engine::Engine():graphics(640,480) {
+Engine::Engine():graphics(640,480),obs(),detector(obs) {
 	running = true;
 	graphics.addShape(Rectangle(10, 10, 50, 10, Colors::ORANGE));
 	timeTxt = graphics.addShape(Text(10, 50, "0", Colors::YELLOW));

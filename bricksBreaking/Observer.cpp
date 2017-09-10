@@ -41,7 +41,7 @@ void Observer::notifyEvent(Game::Event& event) {
 }
 
 void Observer::handleEvents() {
-
+	//taltul
 }
 
 Observer::~Observer() {

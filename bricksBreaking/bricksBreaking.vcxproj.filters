@@ -167,5 +167,8 @@
     <ClCompile Include="Line.cpp">
       <Filter>Resource Files\Source Files\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="Observer.cpp">
+      <Filter>Resource Files\Source Files\Game\Observer</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

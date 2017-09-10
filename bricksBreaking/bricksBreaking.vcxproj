@@ -75,8 +75,6 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\sdl2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\sdl2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -178,7 +176,6 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageTexture.cpp" />
-    <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Rectangle.cpp" />

@@ -4,8 +4,6 @@
 #include "Text.h"
 #include "Shape.h"
 #include "GameObject.h"
-#include "CollisionDetector.h"
-#include "Observer.h"
 #include <sstream>
 #include <stdint.h>
 #include <vector>
@@ -27,10 +25,12 @@ public:
 		A constructor for the game engine, creates the engine.
 	*/
 	Engine();
+
 	/**
 		Destructor for the game engine
 	*/
 	virtual ~Engine();
+
 	/**
 		Starts the game
 	*/
@@ -39,6 +39,7 @@ public:
 		Moves all the game objects
 	*/
 	void moveObj();
+
 	/**
 		Adds a new GameObject to the game
 
@@ -48,8 +49,6 @@ public:
 private:
 	SDL_mutex *lock; //A lock for synchronizing access to the game objects vector
 	std::vector<GameObject*> gameObjects; //The game objects vector
-	Observer obs;
-	CollisionDetector detector;
 	void runGame(); //Runs the game
 	void onEvent(SDL_Event* Event); //handles sdl event
 	static Uint32 timerCallBack(Uint32 interval, void *param); //Call back function to be called each timer cycle

@@ -42,13 +42,6 @@ Vector Vector::getVectorPolar(double size, double angle) {
 	return Vector(x, y);
 }
 
-//Returns a vector that goes from one point to another
-Vector Vector::getVectorPoints(Point a, Point b) {
-	double x = b.getX() - a.getX();
-	double y = b.getY() - a.getY();
-	return Vector(x, y);
-}
-
 //Returns the dot product of this vector and another one
 double Vector::dotProduct(const Vector& other) const {
 	if (getSize() == 0 || other.getSize() == 0) //If one of the vector is the zero vector
@@ -80,5 +73,3 @@ double Vector::getAngle() const {
 double Vector::getAngleWith(const Vector& other) const {
 	return acos(dotProduct(other)); //The arccos of the dot product is the angle
 }
-
-

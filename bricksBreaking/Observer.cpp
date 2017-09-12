@@ -2,6 +2,7 @@
 
 /* empty constructor */
 Observer::Observer():events() {
+	//test 2
 } 
 
 /* copy constructors - deep coping the vector of other */

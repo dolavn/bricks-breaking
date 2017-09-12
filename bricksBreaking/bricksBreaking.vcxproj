@@ -152,7 +152,6 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Collidable.h" />
     <ClInclude Include="CollisionDetector.h" />
-    <ClInclude Include="CollisionEvent.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="GameObject.h" />

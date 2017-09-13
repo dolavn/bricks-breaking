@@ -18,14 +18,12 @@ namespace Game {
 			Creates a new empty Event object.
 		*/
 		Event(); 
-
 		/**
 			Deep copies an existing Event object
 
 			@param other The other event object.
 		*/
 		Event(const Event& other); 
-
 		/**
 			An assignment operator, returns a deep copied copy 
 			of another event.
@@ -34,22 +32,18 @@ namespace Game {
 			@returns A deep copied copy of the other event.
 		*/
 		Event& operator=(const Event& other);
-
 		/**
 			Destroys this event object.
 		*/
 		virtual ~Event(); 
-
 		/**
 			Activates this event, a pure virtual function.
 		*/
 		virtual void handle() = 0; 
-
 		/**
-		
+			creates a clone (copy) of the event.
 		*/
 		virtual Event* clone() = 0;
-
 	private:
 	};
 }

@@ -43,7 +43,6 @@ public:
 		@param event The event being reported.
 	*/
 	void notifyEvent(Game::Event& event); 
-
 	/**
 		Handles all the events reported to this observer.
 	*/

@@ -1,11 +1,15 @@
 #include "Observer.h"
 
-/* empty constructor */
+/**
+	empty constructor 
+*/
 Observer::Observer():events() {
 	//test 
 } 
 
-/* copy constructors - deep coping the vector of other */
+/** 
+	copy constructors - deep coping the vector of other 
+*/
 Observer::Observer(const Observer& other) : events() {
 	for (unsigned int i = 0; i < other.events.size(); i++) {
 		Game::Event* add = other.events[i]->clone();
@@ -13,7 +17,9 @@ Observer::Observer(const Observer& other) : events() {
 	}
 } 
 
-/*deletes this Observer and copies the events in other's vector to new one and assing it to this*/
+/**
+	deletes this Observer and copies the events in other's vector to new one and assing it to this
+*/
 Observer& Observer::operator=(const Observer& other) {
 	if (this == &other) {
 		return *this;
@@ -27,6 +33,9 @@ Observer& Observer::operator=(const Observer& other) {
 	return *this;
 }
 
+/**
+	clears all the event in the observer's vector
+*/
 void Observer::clear() {
 	for (unsigned int i = 0; i < events.size(); i++) {
 		if (events[i] != nullptr) {
@@ -36,16 +45,28 @@ void Observer::clear() {
 	}
 }
 
+/**
+	addes the a new event to the observer
+*/
 void Observer::notifyEvent(Game::Event& event) {
 	Game::Event* add = event.clone();
 	events.push_back(add);
 }
 
 void Observer::handleEvents() {
-	//taltul
-}
-
-Observer::~Observer() {
+	for (unsigned int i = 0; i < events.size(); i++) {
+		if (events[i] != nullptr) {
+			//Game::Event* temp = events[i]->handle();
+			Game::Event& temp = *events[i];
+			temp.handle();
+		}
+	}
 	clear();
 }
 
+/**
+	destroy the Observer using clear method.
+*/
+Observer::~Observer() {
+	clear();
+}

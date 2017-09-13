@@ -173,5 +173,8 @@
     <ClCompile Include="Observer.cpp">
       <Filter>Resource Files\Source Files\Game\Observer</Filter>
     </ClCompile>
+    <ClCompile Include="CollisionDetector.cpp">
+      <Filter>Resource Files\Source Files\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

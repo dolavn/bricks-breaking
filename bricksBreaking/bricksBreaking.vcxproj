@@ -176,6 +176,7 @@
     <ClCompile Include="bricksBreaking.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Collidable.cpp" />
+    <ClCompile Include="CollisionDetector.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Graphics.cpp" />

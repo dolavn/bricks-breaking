@@ -1,6 +1,7 @@
 #include "Point.h"
 #include "Vector.h"
 #include "Engine.h"
+#include "Line.h"
 #include <vector>
 
 #ifndef COLLIDABLE_H_
@@ -28,7 +29,7 @@ public:
 
 		@return A vector of pairs of points
 	*/
-	std::vector<std::pair<Point,Point>>& getSides();
+	std::vector<Physics::Line>& getSides();
 	/**
 		Updates the location of this object, to be used after this object moved.
 		This updateLocation method is used for convex polygons.
@@ -54,7 +55,7 @@ private:
 	const double radius;
 	Engine& engine;
 	Point center;
-	std::vector<std::pair<Point, Point>> sides;
+	std::vector<Physics::Line> sides;
 
 	void setSides(std::vector<Point>& points);
 };

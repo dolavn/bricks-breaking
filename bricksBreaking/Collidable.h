@@ -45,6 +45,12 @@ public:
 	*/
 	void updateLocation(Point center);
 	/**
+		Returns true if and only if this collidable is a circle.
+
+		@return True if and only if this collidable is a circle.
+	*/
+	bool isCircle();
+	/**
 		A pure virtual function, how this collidable reacts to the collision.
 
 		@param dir The direction from which the collision came.

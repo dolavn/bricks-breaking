@@ -12,7 +12,7 @@ Collidable::Collidable(Point point,double radius,Engine& engine) :isCircle(true)
 }
 
 //a getter for the sides of the polygon
-std::vector<std::pair<Point, Point>>& Collidable::getSides() {
+std::vector<Physics::Line>& Collidable::getSides() {
 	return sides;
 }
 
@@ -40,12 +40,12 @@ void Collidable::updateLocation(Point center) {
 
 //sets the side of this shape
 void Collidable::setSides(std::vector<Point>& points) {
-	sides = std::vector<std::pair<Point, Point>>();
+	sides = std::vector<Physics::Line>();
 	for (unsigned int i = 0; i < points.size(); i++) {
 		/* Creates a pair of points, between this point and next one.
 		The next point is either the point in the next index, or the point in index 0,
 		if we've reached the point in the last index. */
-		std::pair<Point, Point> curr(points[i], points[(i + 1) % points.size()]);
+		Physics::Line curr(points[i], points[(i + 1) % points.size()]);
 		sides.push_back(curr);
 	}
 }

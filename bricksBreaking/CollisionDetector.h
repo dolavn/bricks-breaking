@@ -5,6 +5,9 @@
 #ifndef COLLISION_DETECTOR_H_
 #define COLLISION_DETECTOR_H_
 
+const char CIRCLE_FLAG = 1;
+const char CONVEX_FLAG = 1 << 1;
+
 /**
 	This class is tasked with detecting collisions, and reporting them
 	to the observer class.
@@ -37,6 +40,10 @@ public:
 	void addCollidable(Collidable& collidable);
 private:
 	Observer& obs;
+	bool checkCollision(Collidable& coll1, Collidable& coll2);
+	bool checkCollisionCirc(Collidable& coll1, Colliadble& coll2);
+	bool checkCollisionConv(Collidable& coll1, Collidable& coll2);
+	bool checkCollisionMix(Collidable& coll1, Collidable& coll2);
 	std::vector<Collidable&> collidables;
 };
 

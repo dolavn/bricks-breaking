@@ -68,7 +68,7 @@ int Graphics::addShape(Shape& shape) {
 	int ans = 0;
 	if (freeIndexes.size() == 0) { //There are no free indexes in the shapes vector
 		drawList->push_back(insert);
-		ans = drawList->size() - 1;
+		ans = int(drawList->size() - 1);
 	}
 	else { //There are free indexes in the shapes vector
 		ans = freeIndexes[freeIndexes.size() - 1];

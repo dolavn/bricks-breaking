@@ -1,20 +1,19 @@
 #include "stdafx.h"
 #include "Line.h"
+#include <iostream>
 
 using namespace Physics;
 
 //Constructs the line that goes between two given points
-Line::Line(Point a, Point b):m(calcM(a,b)),n(calcN(a,b)) {
-
-}
-
-//Contsructs the line defined by the equation y=mx+n
-Line::Line(double m, double n) : m(m), n(n) {
-
+Line::Line(Point a, Point b):vert(a.getX()==b.getX()),m(calcM(a,b)),n(calcN(a,b)),a(a),b(b){
+	std::cout << a.getX() << std::endl;
+	std::cout << b.getX() << std::endl;
+	std::cout << vert << std::endl;
+	
 }
 
 //Deep copies an existing line object
-Line::Line(const Line& other) : m(other.m), n(other.n) {
+Line::Line(const Line& other) :vert(other.vert), m(other.m), n(other.n),a(other.a),b(other.b){
 
 }
 
@@ -48,13 +47,29 @@ Vector Line::getVector() {
 //calculates the m (y=mx+n) of the line that goes from point a to point b
 double Line::calcM(Point a, Point b) {
 	//Finding m from the equation m=(y2-y1)/(x2-x1)
+	if (vert)	return INFINITY;
 	return ((b.getY() - a.getY()) / (b.getX()) - a.getX());
 }
 
 //calculates the n (y=mx+n) of the line that goes from point a to point b
 double Line::calcN(Point a, Point b) {
 	//Finding n from the equation n=(x2*y1-y2*x1)/(x2-x1)
-	return ((b.getX()*a.getY() - b.getY()*a.getX()) / (b.getX() - a.getX())));
+	if (vert)	return NAN;
+	return ((b.getX()*a.getY() - b.getY()*a.getX()) / (b.getX() - a.getX()));
 }
 
+//getter for m
+double Line::getM() {
+	return m;
+}
+
+//getter for n
+double Line::getN() {
+	return n;
+}
+
+//getter for vert
+bool Line::isVertical() {
+	return vert;
+}
 

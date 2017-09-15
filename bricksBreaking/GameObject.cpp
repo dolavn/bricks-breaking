@@ -98,7 +98,7 @@ int GameObject::addShape(Shape& shape) {
 	 until it will be added to the graphics object when the draw function will be called.*/
 	std::pair<Shape*, int> newPair = std::pair<Shape*, int>(shapePointer, -1); 
 	shapesList.push_back(newPair);
-	return shapesList.size() - 1; 
+	return int(shapesList.size() - 1); 
 }
 
 //Removes the shape from a specific index and adds newShape in its place.

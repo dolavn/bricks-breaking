@@ -7,6 +7,8 @@
 #ifndef COLLIDABLE_H_
 #define COLLIDABLE_H_
 
+class Engine;
+
 class Collidable {
 public:
 	/**
@@ -57,8 +59,8 @@ public:
 	*/
 	virtual void collide(Physics::Vector dir) = 0;
 private:
-	const bool isCircle;
-	const double radius;
+	bool circle;
+	double radius;
 	Engine& engine;
 	Point center;
 	std::vector<Physics::Line> sides;

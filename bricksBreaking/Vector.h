@@ -94,6 +94,13 @@ namespace Physics {
 			@return The dot product of this vector and another one.
 		*/
 		double dotProduct(const Vector& other) const;
+		/**
+			Operator== returns true if and only if this object equals to one.
+
+			@param rhs The object with which the comparision is done.
+			@return True if and only this object equals to rhs.
+		*/
+		inline friend bool operator==(const Vector& rhs,const Vector& lhs);
 	private:
 		const double x; //The x coordinate of this vector
 		const double y; //They y coordinate of the vector

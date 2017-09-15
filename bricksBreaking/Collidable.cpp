@@ -2,12 +2,12 @@
 #include "Collidable.h"
 
 //constructor for convex polygon
-Collidable::Collidable(std::vector<Point>& points,Engine& engine):isCircle(false), sides(),center(0,0),radius(0),engine(engine) {
+Collidable::Collidable(std::vector<Point>& points,Engine& engine):circle(false), sides(),center(0,0),radius(0),engine(engine) {
 	setSides(points);
 }
 
 //constructor for circle shape
-Collidable::Collidable(Point point,double radius,Engine& engine) :isCircle(true), sides(),center(point),radius(radius),engine(engine) {
+Collidable::Collidable(Point point,double radius,Engine& engine) :circle(true), sides(),center(point),radius(radius),engine(engine) {
 
 }
 
@@ -18,7 +18,7 @@ std::vector<Physics::Line>& Collidable::getSides() {
 
 //updates the location of this object
 void Collidable::updateLocation(std::vector<Point>& points) {
-	if (!isCircle) {
+	if (!circle) {
 		setSides(points);
 	}
 	else {
@@ -28,7 +28,7 @@ void Collidable::updateLocation(std::vector<Point>& points) {
 
 //updates the location of this object
 void Collidable::updateLocation(Point center) {
-	if (isCircle) {
+	if (circle) {
 		this->center = center;
 	}
 	else {
@@ -48,4 +48,8 @@ void Collidable::setSides(std::vector<Point>& points) {
 		Physics::Line curr(points[i], points[(i + 1) % points.size()]);
 		sides.push_back(curr);
 	}
+}
+
+bool Collidable::isCircle() {
+	return circle;
 }

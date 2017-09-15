@@ -37,14 +37,14 @@ public:
 
 		@param collidable The new collidable to be added.
 	*/
-	void addCollidable(Collidable& collidable);
+	void addCollidable(Collidable* collidable);
 private:
 	Observer& obs;
 	bool checkCollision(Collidable& coll1, Collidable& coll2);
-	bool checkCollisionCirc(Collidable& coll1, Colliadble& coll2);
+	bool checkCollisionCirc(Collidable& coll1, Collidable& coll2);
 	bool checkCollisionConv(Collidable& coll1, Collidable& coll2);
 	bool checkCollisionMix(Collidable& coll1, Collidable& coll2);
-	std::vector<Collidable&> collidables;
+	std::vector<Collidable*> collidables;
 };
 
 #endif

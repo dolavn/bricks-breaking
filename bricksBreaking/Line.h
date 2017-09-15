@@ -22,13 +22,6 @@ namespace Physics {
 		*/
 		Line(Point a, Point b);
 		/**
-			Constructs a new line, the one that fits to the equation y=mx+n
-
-			@param m The m parameter from the equation y=mx+n
-			@param n The n parameter form the equation y=mx+n
-		*/
-		Line(double m, double n);
-		/**
 			Copy constructor, deeps copy an existing Line object.
 
 			@param other The other line
@@ -58,11 +51,32 @@ namespace Physics {
 			@return A unit vector with the direction of this line
 		*/
 		Physics::Vector getVector();
+		/**
+			Returns the slope of this line, that is, the m in the equation y=mx+n.
+
+			@return The slope of this line
+		*/
+		double getM();
+		/**
+			Returns the n in the equation y=mx+n for this line.
+
+			@return The n in the equation y=mx+n for this line.
+		*/
+		double getN();
+		/**
+			Returns true if and only if this line is vertical, that is x=x0.
+
+			@return True if and only if, this line is vertical.
+		*/
+		bool isVertical();
 	private:
 		double calcM(Point a, Point b);
 		double calcN(Point a, Point b);
+		bool vert;
 		double m;
 		double n;
+		Point a;
+		Point b;
 	};
 }
 

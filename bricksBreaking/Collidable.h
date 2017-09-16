@@ -57,7 +57,7 @@ public:
 
 		@param dir The direction from which the collision came.
 	*/
-	virtual void collide(Physics::Vector dir) = 0;
+	virtual void collide(Collidable& other) = 0;
 private:
 	bool circle;
 	double radius;

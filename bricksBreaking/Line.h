@@ -116,7 +116,23 @@ namespace Physics {
 			@param x A given x value.
 			@return True if and only if a given x value is on the line.
 		*/
-		bool isOnLine(double x) const;
+		bool isOnLineX(double x) const;
+		/**
+			Returns true if and only if a given y value is on this line.
+			To be used only on vertical lines, throws an exception otherwise.
+
+			@param y The given y value
+			@throw std::exception If this isn't a vertical line.
+			@return True if and only if this y value
+		*/
+		bool isOnLineY(double y) const;
+		/**
+			Returns the y value of the line when x is equal to a given x.
+
+			@param x A given x value
+			@return The y value of the line when x is equal to the given x
+		*/
+		double getY(double x) const;
 	private:
 		double calcM(Point a, Point b);
 		double calcN(Point a, Point b);

@@ -1,6 +1,8 @@
 #ifndef POINT_H_
 #define POINT_H_
 
+#include <iostream>
+
 /**
 	Represents a point in the cartesian plane.
 
@@ -45,6 +47,8 @@ public:
 		@return The y coordinate of the point
 	*/
 	int getY() const;
+
+	friend std::ostream& operator<<(std::ostream& os, const Point& point);
 private:
 	int x; //The x coordinate of the point.
 	int y; //The y coordinate of the point

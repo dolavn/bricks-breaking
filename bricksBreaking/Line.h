@@ -6,7 +6,8 @@
 
 namespace Physics {
 	/**
-		A line in the cartesian plane, defined by the equation y=mx+n.
+		A line in the cartesian plane, defined by the equation y=mx+n,
+		and two points which define the bounderies of the line.
 
 		@author Dolav Nitay
 		@version 1.0
@@ -56,19 +57,66 @@ namespace Physics {
 
 			@return The slope of this line
 		*/
-		double getM();
+		double getM() const;
 		/**
 			Returns the n in the equation y=mx+n for this line.
 
 			@return The n in the equation y=mx+n for this line.
 		*/
-		double getN();
+		double getN() const;
 		/**
 			Returns true if and only if this line is vertical, that is x=x0.
 
 			@return True if and only if, this line is vertical.
 		*/
-		bool isVertical();
+		bool isVertical() const;
+		/**
+			Returns true if and only if this line, and another intersect.
+
+			@param other The other line.
+			@return True if and only if this line and the other intersect.
+		*/
+		bool intersect(Line& other) const;
+		/**
+			Returns true if and only if this line and a given circle intersect.
+
+			@param center The center of the circle
+			@param radius The radius of the circle
+
+			@return True if and only if this line and the given circle intersect.
+		*/
+		bool intersect(Point center, double radius);
+		/**
+			Return the x of this line, if this line is vertical. Otherwise throws 
+			an exception.
+
+			@return The x of this line, if this line is vertical.
+			@throw std::exception If this line isn't vertical.
+		*/
+		double getX() const;
+		/**
+			Returns the maximum y value of this line, if this line is vertical, otherwise throws
+			an exception.
+
+			@throw std::exception If this line isn't vertical.
+			@return The maximum y value of this line
+		*/
+		double maxY() const;
+		/**
+			Returns the minimum y value of this line, if this line is vertical, otherwise throws
+			an exception.
+
+			@throw std::exception If this line isn't vertical.
+			@return The minimum y value of this line
+		*/
+		double minY() const;
+		/**
+			Returns true if and only if a given x value is on the line.
+
+			@param x A given x value.
+			@return True if and only if a given x value is on the line.
+		*/
+		bool isOnLine(double x) const;
 	private:
 		double calcM(Point a, Point b);
 		double calcN(Point a, Point b);

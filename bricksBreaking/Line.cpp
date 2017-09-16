@@ -2,11 +2,20 @@
 #include "Line.h"
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 
 using namespace Physics;
 
 //Constructs the line that goes between two given points
 Line::Line(Point a, Point b):vert(a.getX()==b.getX()),m(calcM(a,b)),n(calcN(a,b)),a(a),b(b){
+	std::cout << "Line created" << std::endl;
+	std::stringstream ss;
+	ss << "y=" << m << "x+" << n;
+	std::cout << ss.str() << std::endl;
+	std::cout << "Points:" << std::endl;
+	ss = std::stringstream();
+	ss << "a:" << a << " b:" << b;
+	std::cout << ss.str() << std::endl;
 }
 
 //Deep copies an existing line object
@@ -33,8 +42,14 @@ Line::~Line() {
 
 //calculates the distance between this line and a given point
 double Line::distFromPoint(const Point& point) {
-	//calculates the distance using the equation d = |(m*x0-y0+n)/sqrt(m^2+1)|
-	return abs((m*point.getX() - point.getY() + n) / sqrt(pow(m, 2) + 1));
+	if (!vert) {
+		//calculates the distance using the equation d = |(m*x0-y0+n)/sqrt(m^2+1)|
+		return abs((m*point.getX() - point.getY() + n) / sqrt(pow(m, 2) + 1));
+	}
+	else {
+		//calculates the distance using the equation d = |x0-x(line)|
+		return abs(point.getX() - getX());
+	}
 }
 
 Vector Line::getVector() {
@@ -45,7 +60,8 @@ Vector Line::getVector() {
 double Line::calcM(Point a, Point b) {
 	//Finding m from the equation m=(y2-y1)/(x2-x1)
 	if (vert)	return INFINITY;
-	return ((double(b.getY() - a.getY())) / double(b.getX()) - a.getX());
+	double m= double(b.getY() - a.getY()) / double(b.getX() - a.getX());
+	return m;
 }
 
 //calculates the n (y=mx+n) of the line that goes from point a to point b
@@ -140,36 +156,85 @@ bool Line::intersect(Line& other) const{
 		double n1 = n;
 		double n2 = other.getN();
 
-		std::cout << "y=";
-		std::cout << m1;
-		std::cout << "x+";
-		std::cout << n1 << std::endl;
-		std::cout << "y=";
-		std::cout << m2;
-		std::cout << "x+";
-		std::cout << n2 << std::endl;
-		x = (n2 - n1) / (m1 - m2);
-		std::cout << "x:";
-		std::cout << x << std::endl;
+		x = double(n2 - n1) / double(m1 - m2);
 	}
 	else { //one line isn't vertical
+		double y;
+		const Line* ver; //The vertical line
+		const Line* nonVer; //The non-vertical line
 		if (v1) { //this line is vertical
+			ver = this;
+			nonVer = &other;
 			x = getX();
+			y = other.getY(x);
 		}
 		else { //the other line is vertical
+			ver = &other;
+			nonVer = this;
 			x = other.getX();
+			y = getY(x);
 		}
+		return ver->isOnLineY(y) && nonVer->isOnLineX(x);
 	}
-	return isOnLine(x) && other.isOnLine(x);
+	return isOnLineX(x) && other.isOnLineX(x);
 }
 
 //check intersection with circle
 bool Line::intersect(Point center, double radius) {
 	double dist = distFromPoint(center);
-	return dist <= radius;
+	if (dist > radius) {
+		return false; //the distance between the line and the circle is greater than the radius.
+	}
+	else { //the distance between the line and the circle is smaller than or equal to the radius
+		double x0 = center.getX();
+		double y0 = center.getY();
+		if (!vert) {
+			double del = -pow(n, 2) - 2 * n*x0*m +2*n*y0- pow(x0*m, 2) + 2 * x0*y0*m - pow(y0, 2) + pow(m*radius, 2) + pow(radius, 2);
+			del = sqrt(del);
+			std::pair<double, double> segCircle;
+			segCircle.first = (-del - n*m + x0 + y0*m)/(pow(m,2)+1);
+			segCircle.second = (del - n*m + x0 + y0*m)/(pow(m, 2) + 1);
+			std::cout << "(" << segCircle.first << " , " << segCircle.second << ")" << std::endl;
+			std::pair<double, double> segLine;
+			segLine.first = std::min(a.getX(), b.getX());
+			segLine.second = std::max(a.getX(), b.getX());
+			std::pair<double, double> *segMin; //the leftmost segment
+			std::pair<double, double> *segMax; //the rightmost segment
+			if (segCircle.first <= segLine.first) {
+				segMin = &segCircle;
+				segMax = &segLine;
+			}
+			else {
+				segMin = &segLine;
+				segMax = &segCircle;
+			}
+			return segMax->second >= segMin->first;
+		}
+		else {
+			double del = pow(radius, 2) - pow(getX() - x0, 2);
+			del = sqrt(del);
+			std::pair<double, double> segCircle;
+			std::pair<double, double> segLine;
+			segCircle.first = y0 - del;
+			segCircle.second = y0 + del;
+			segLine.first = minY();
+			segLine.second = maxY();
+			std::pair<double, double>* segMin;
+			std::pair<double, double>* segMax;
+			if (segCircle.first < segLine.first) {
+				segMin = &segCircle;
+				segMax = &segLine;
+			}
+			else {
+				segMin = &segLine;
+				segMax = &segCircle;
+			}
+			return segMin->second > segMax->first;
+		}
+	}
 }
 
-bool Line::isOnLine(double x) const{
+bool Line::isOnLineX(double x) const{
 	if (vert) {
 		throw std::exception("Can't call this method on a vertical line");
 	}
@@ -177,5 +242,25 @@ bool Line::isOnLine(double x) const{
 		double minX = std::min(a.getX(), b.getX());
 		double maxX = std::max(a.getX(), b.getX());
 		return x >= minX && x <= maxX;
+	}
+}
+
+bool Line::isOnLineY(double y) const {
+	if (!vert) {
+		throw std::exception("Can't call this method on a non-vertical line");
+	}
+	else {
+		double minY = std::min(a.getY(), b.getY());
+		double maxY = std::max(a.getY(), b.getY());
+		return y >= minY && y <= maxY;
+	}
+}
+
+double Line::getY(double x) const {
+	if (vert) {
+		throw std::exception("Can't call this method on a vertical line");
+	}
+	else {
+		return m*x + n;
 	}
 }

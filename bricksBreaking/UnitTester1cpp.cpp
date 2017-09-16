@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 	using namespace Physics;
 	std::cout << "Testing" << std::endl;
 	Line a = Line(Point(2, 0), Point(2, 3));
-	Line b = Line(Point(1, 1), Point(3, 3));
+	Line b = Line(Point(1, 1), Point(4, 4));
 	std::stringstream ss;
 	ss << "y=" << a.getM() << "x+" << a.getN();
 	std::cout << ss.str() << std::endl;
@@ -33,7 +33,7 @@ int main(int argc, char **argv) {
 		std::cout << "doesn't intersect" << std::endl;
 	}
 	if (b.intersect(Point(4, 4), 1)) {
-		std::cout << "(1,1),(3,3) intersect" << std::endl;
+		std::cout << "(1,1),(4,4) intersect" << std::endl;
 	}
 	else {
 		std::cout << "doesn't intersect" << std::endl;

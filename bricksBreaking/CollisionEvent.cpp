@@ -15,5 +15,6 @@ CollisionEvent* CollisionEvent::clone() {
 }
 
 void CollisionEvent::handle() {
-
+	object1.collide(object2);
+	object1.collide(object2);
 }

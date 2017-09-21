@@ -14,6 +14,6 @@ namespace Engine {
 			Controllable(const Controllable& other);
 	private:
 
-	}
-};
+	};
+}
 #endif

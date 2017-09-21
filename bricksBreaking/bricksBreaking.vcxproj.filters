@@ -123,6 +123,9 @@
     <ClInclude Include="Controllable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="KeyPressedEvent.h">
+      <Filter>Header Files\Game\Observer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

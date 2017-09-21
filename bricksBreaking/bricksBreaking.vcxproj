@@ -163,6 +163,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageTexture.h" />
     <ClInclude Include="KeyboardListener.h" />
+    <ClInclude Include="KeyPressedEvent.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="Point.h" />

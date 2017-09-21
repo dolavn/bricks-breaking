@@ -155,6 +155,7 @@
     <ClInclude Include="CollisionDetector.h" />
     <ClInclude Include="CollisionEvent.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Controllable.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="Graphics.h" />

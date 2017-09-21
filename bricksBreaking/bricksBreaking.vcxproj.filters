@@ -120,6 +120,9 @@
     <ClInclude Include="KeyboardListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Controllable.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

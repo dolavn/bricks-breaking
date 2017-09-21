@@ -111,9 +111,11 @@ namespace Physics {
 		*/
 		double minY() const;
 		/**
-			Returns true if and only if a given x value is on the line.
+			Returns true if and only if a given x value is on the line, can only be used
+			on non-vertical lines. Throws an exception when used on vertical lines.
 
 			@param x A given x value.
+			@throws std::exception When used on vertical lines.
 			@return True if and only if a given x value is on the line.
 		*/
 		bool isOnLineX(double x) const;
@@ -127,9 +129,11 @@ namespace Physics {
 		*/
 		bool isOnLineY(double y) const;
 		/**
-			Returns the y value of the line when x is equal to a given x.
+			Returns the y value of the line when x is equal to a given x. Can only call
+			this method on a non-vertical line, throws an exception otherwise.
 
 			@param x A given x value
+			@throws std::exception If this line is vertical.
 			@return The y value of the line when x is equal to the given x
 		*/
 		double getY(double x) const;

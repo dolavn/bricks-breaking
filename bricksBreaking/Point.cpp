@@ -34,6 +34,11 @@ int Point::getY() const{
 	return y;
 }
 
+//calculates the distance between this point and another
+double Point::distFromPoint(const Point& other) const {
+	return sqrt(pow(other.x - x, 2) + pow(other.y - y, 2));
+}
+
 //operator << overload
 std::ostream& operator<<(std::ostream& os, const Point& point) {
 	os << "(" << point.x << "," << point.y << ")";

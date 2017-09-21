@@ -7,12 +7,16 @@
 */
 
 #include "GameObject.h"
+#include "Collidable.h"
 #include "Shape.h"
 
 #ifndef BALL_H_
 #define BALL_H_
 
-class Ball :public GameObject {
+const int BALL_RADIUS = 50; //The radius of the ball
+const Color BALL_COLOR = Colors::RED; //The color of the ball.
+
+class Ball :public GameObject,public Collidable {
 public:
 	/**
 		Constructs a new Ball object
@@ -40,15 +44,36 @@ public:
 	*/
 	virtual ~Ball();
 	/**
+		How the ball reacts to a collision.
+
+		@param other The other collidable
+	*/
+	virtual void collide(Collidable& other, Physics::Vector otherVel);
+	/**
+		Returns the velocity of this Collidable object.
+
+		@return The velocity of this Collidable object.
+	*/
+	virtual Physics::Vector getColVelocity() const;
+	/**
 		Returns a pointer to a copy of this ball object.
 
 		@return A pointer to a copy of this ball object.
 	*/
 	virtual GameObject* clone();
-private:
+	/**
+		Subscribes this ball to the game engine
 
-	const int BALL_RADIUS = 100; //The radius of the ball
-	const Color BALL_COLOR = Colors::RED; //The color of the ball.
+		@param engine The engine to subscribe to
+	*/
+	virtual void subscribe(Engine& engine);
+	/**
+		Sets this ball's velocity
+
+		@param velocity The new ball's velocity
+	*/
+	void setVelocity(Physics::Vector velocity);
+private:
 	
 	virtual void moveObject();
 

@@ -15,6 +15,8 @@
 #include "Point.h"
 #include <vector>
 
+class Engine;
+
 class GameObject {
 public:
 	/**
@@ -58,6 +60,12 @@ public:
 		@returns A pointer to a deep-copied copy of this GameObject
 	*/
 	virtual GameObject* clone() = 0;
+	/**
+		Subscribes this game object to the engine.
+
+		@param engine The engine to subscribe to
+	*/
+	virtual void subscribe(Engine& engine) = 0;
 	/**
 		Moves the object, this function is called by the game engine 
 		every timer cycle, and moves this object according to its current velocity.

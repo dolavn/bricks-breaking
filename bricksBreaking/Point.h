@@ -18,14 +18,12 @@ public:
 		@param y The y coordinate of the point
 	*/
 	Point(int x, int y);
-
 	/**
 		Deep copies an existing point.
 
 		@param other The other point to be copied from.
 	*/
 	Point(const Point& other);
-
 	/**
 		Assignment operator, used to deep copy an existing point to this one.
 
@@ -33,20 +31,25 @@ public:
 		@return A reference to the point after the copy.
 	*/
 	Point& operator=(const Point& other);
-
 	/**
 		Returns the x coordinate of the point.
 
 		@return The x coordinate of the point
 	*/
 	int getX() const;
-
 	/**
 		Returns the y coordinate of the point.
 
 		@return The y coordinate of the point
 	*/
 	int getY() const;
+	/**
+		Returns the distance between this point and another one.
+
+		@param other The other point
+		@return The distance between this point and another one
+	*/
+	double distFromPoint(const Point& other) const;
 
 	friend std::ostream& operator<<(std::ostream& os, const Point& point);
 private:

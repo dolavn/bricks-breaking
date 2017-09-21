@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "GameObject.h"
 #include "Circle.h"
+#include "Engine.h"
 #include <iostream>
 
 //An empty constructor

@@ -2,17 +2,22 @@
 #include "Engine.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "Vector.h"
 #include "Ball.h"
 #include <iostream>
 
 //Constructs a game engine object.
 Engine::Engine():graphics(640,480),obs(),detector(obs) {
+	lock = SDL_CreateMutex();
 	running = true;
 	graphics.addShape(Rectangle(10, 10, 50, 10, Colors::ORANGE));
 	timeTxt = graphics.addShape(Text(10, 50, "0", Colors::YELLOW));
-	addObject(Ball(100,200));
-	addObject(Ball(100, 400));
-	lock = SDL_CreateMutex();
+	Ball ball1 = Ball(100, 200);
+	Ball ball2 = Ball(500, 200);
+	ball1.setVelocity(Physics::Vector::getVectorCartesian(3, 0));
+	ball2.setVelocity(Physics::Vector::getVectorCartesian(-3, 0));
+	addObject(ball1);
+	addObject(ball2);
 }
 
 //Starts the game
@@ -107,6 +112,7 @@ void Engine::onEvent(SDL_Event* Event) {
 void Engine::addObject(GameObject& obj) {
 	SDL_LockMutex(lock); //Acquires the lock to access the game objects vector
 	GameObject* addObj = obj.clone();
+	addObj->subscribe(*this);
 	gameObjects.push_back(addObj);
 	SDL_UnlockMutex(lock); //Releases the lock
 }
@@ -116,6 +122,7 @@ Uint32 Engine::timerCallBack(Uint32 interval, void *param) {
 	Engine* eng = static_cast<Engine*>(param); //Casts the parameter to type Engine
 	if (eng->running) {
 		eng->moveObj(); //Moves all the objects in the game
+		eng->detector.detectCollisions();
 	}
 	eng->timerId = SDL_AddTimer(TIMER_CYCLE, Engine::timerCallBack, eng); //Recreates the timer with this callback
 	return 0;
@@ -145,6 +152,10 @@ void Engine::runGame() {
 		drawRun = drawRun + dra; //Adds the time calculated to the average
 	}
 	SDL_UnlockMutex(lock); //Releases the lock
+}
+
+void Engine::addCollidable(Collidable* col) {
+	detector.addCollidable(col);
 }
 
 //Destructor for this engine

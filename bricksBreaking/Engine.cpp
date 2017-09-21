@@ -123,6 +123,7 @@ Uint32 Engine::timerCallBack(Uint32 interval, void *param) {
 	if (eng->running) {
 		eng->moveObj(); //Moves all the objects in the game
 		eng->detector.detectCollisions();
+		eng->obs.handleEvents();
 	}
 	eng->timerId = SDL_AddTimer(TIMER_CYCLE, Engine::timerCallBack, eng); //Recreates the timer with this callback
 	return 0;

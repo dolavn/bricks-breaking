@@ -5,7 +5,6 @@
 
 //constructor
 CollisionDetector::CollisionDetector(Observer& obs) :obs(obs) {
-
 }
 
 //destructor
@@ -22,10 +21,7 @@ void CollisionDetector::detectCollisions() {
 	for (unsigned int i = 0; i < collidables.size(); i++) {
 		for (unsigned int j = i+1; j < collidables.size(); j++) {
 			if (checkCollision(*(collidables[i]), *(collidables[j]))) {
-				Physics::Vector velA = collidables[i]->getColVelocity();
-				Physics::Vector velB = collidables[j]->getColVelocity();
-				collidables[i]->collide(*(collidables[j]),velB);
-				collidables[j]->collide(*(collidables[i]),velA);
+				obs.notifyEvent(Game::CollisionEvent(*collidables[i], *collidables[j]));
 			}
 		}
 	}

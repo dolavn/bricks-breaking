@@ -34,7 +34,7 @@ public:
 	*/
 	Observer& operator=(const Observer& other); 
 	/**
-	Destroys this event object.
+		Destroys this event object.
 	*/
 	virtual ~Observer(); 
 	/**

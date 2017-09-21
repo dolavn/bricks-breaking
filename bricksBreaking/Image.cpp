@@ -1,15 +1,21 @@
 #include "stdafx.h"
 #include "Image.h"
+#include <iostream>
 #include <SDL_image.h>
 
 //Constructor
-Image::Image(std::string filePath, int x, int y):Shape(Colors::BLACK),texture(NULL),filePath(filePath), x(x), y(y){
+Image::Image(std::string filePath, int x, int y):Shape(Colors::BLACK),texture(NULL),filePath(filePath), x(x), y(y),width(-1),height(-1){
 	
+}
+
+//Constructor with image's dimensions
+Image::Image(std::string filePath, int x, int y, int width, int height) : Shape(Colors::BLACK), texture(NULL), filePath(filePath), x(x), y(y), width(width), height(height) {
+
 }
 
 
 //Copy constructor
-Image::Image(const Image& other) : Shape(other), texture(other.texture),filePath(other.filePath), x(other.x), y(other.y){
+Image::Image(const Image& other) : Shape(other), texture(other.texture),filePath(other.filePath), x(other.x), y(other.y),width(other.width),height(other.height){
 
 }
 
@@ -31,8 +37,14 @@ void Image::draw(Graphics& graphics) {
 	SDL_Rect viewPort;
 	viewPort.x = x;
 	viewPort.y = y;
-	viewPort.w = texture->getWidth()/2;
-	viewPort.h = texture->getHeight()/2;
+	if (width == -1 && height == -1) {
+		viewPort.w = texture->getWidth() / 2;
+		viewPort.h = texture->getHeight() / 2;
+	}
+	else {
+		viewPort.w = width;
+		viewPort.h = height;
+	}
 	SDL_RenderSetViewport(&renderer, &viewPort);
 	SDL_RenderCopy(&renderer, &texture->getTexture(), NULL, NULL);
 }

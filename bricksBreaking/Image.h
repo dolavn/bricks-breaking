@@ -24,6 +24,16 @@ public:
 	*/
 	Image(std::string filepath,int x,int y);
 	/**
+		Regular constructor, creates a new Image object.
+
+		@param filePath The path to the image path
+		@param x The x coordinate of the image
+		@param y The y coordinate of the image
+		@param width The desired width of the image
+		@param height The desired height of the image
+	*/
+	Image(std::string filepath, int x, int y, int width, int height);
+	/**
 		Copy constructor, deep copies an existing Image object.
 
 		@param other The other image
@@ -64,6 +74,8 @@ private:
 	const std::string filePath;
 	const int x;
 	const int y;
+	const int width;
+	const int height;
 };
 
 #endif

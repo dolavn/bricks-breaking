@@ -2,13 +2,16 @@
 #include "Collidable.h"
 
 //constructor for convex polygon
-Collidable::Collidable(std::vector<Point>& points,Engine& engine):circle(false), sides(),center(0,0),radius(0),engine(engine) {
+Collidable::Collidable(std::vector<Point>& points):circle(false), sides(),center(0,0),radius(0){
 	setSides(points);
 }
 
 //constructor for circle shape
-Collidable::Collidable(Point point,double radius,Engine& engine) :circle(true), sides(),center(point),radius(radius),engine(engine) {
+Collidable::Collidable(Point point,double radius) :circle(true), sides(),center(point),radius(radius){
+}
 
+//copy constructor
+Collidable::Collidable(const Collidable& other):circle(other.circle),sides(other.sides),center(other.center),radius(other.radius){
 }
 
 //a getter for the sides of the polygon
@@ -52,4 +55,24 @@ void Collidable::setSides(std::vector<Point>& points) {
 
 bool Collidable::isCircle() {
 	return circle;
+}
+
+//getter for circle
+double Collidable::getRadius() const {
+	if (!circle) {
+		throw std::exception("Can only call this method on a circle");
+	}
+	else {
+		return radius;
+	}
+}
+
+//getter for center point
+Point Collidable::getCenter() const {
+	if (!circle) {
+		throw std::exception("Can only call this method on a circle");
+	}
+	else {
+		return center;
+	}
 }

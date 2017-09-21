@@ -8,14 +8,7 @@ using namespace Physics;
 
 //Constructs the line that goes between two given points
 Line::Line(Point a, Point b):vert(a.getX()==b.getX()),m(calcM(a,b)),n(calcN(a,b)),a(a),b(b){
-	std::cout << "Line created" << std::endl;
-	std::stringstream ss;
-	ss << "y=" << m << "x+" << n;
-	std::cout << ss.str() << std::endl;
-	std::cout << "Points:" << std::endl;
-	ss = std::stringstream();
-	ss << "a:" << a << " b:" << b;
-	std::cout << ss.str() << std::endl;
+
 }
 
 //Deep copies an existing line object
@@ -135,10 +128,8 @@ bool Line::intersect(Line& other) const{
 				min = &other;
 				max = this;
 			}
-			double min1 = min->minY();
 			double min2 = max->minY();
 			double max1 = min->maxY();
-			double max2 = max->maxY();
 			return min2 <= max1;
 		}
 		else { //each line has a different x value
@@ -165,15 +156,13 @@ bool Line::intersect(Line& other) const{
 		if (v1) { //this line is vertical
 			ver = this;
 			nonVer = &other;
-			x = getX();
-			y = other.getY(x);
 		}
 		else { //the other line is vertical
 			ver = &other;
 			nonVer = this;
-			x = other.getX();
-			y = getY(x);
 		}
+		x = ver->getX();
+		y = nonVer->getY(x);
 		return ver->isOnLineY(y) && nonVer->isOnLineX(x);
 	}
 	return isOnLineX(x) && other.isOnLineX(x);

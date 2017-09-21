@@ -17,14 +17,20 @@ public:
 
 		@param points A vector of all the vertices of the polygon. 
 	*/
-	Collidable(std::vector<Point>& points,Engine& engine);
+	Collidable(std::vector<Point>& points);
 	/**
 		Constructs a new collidable object, use this constructor
 		for circles.
 
 		@param point The center of the circle
 	*/
-	Collidable(Point center,double radius,Engine& engine);
+	Collidable(Point center,double radius);
+	/**
+		Copy constructor, deep copies another Collidable object.
+
+		@param other The other Collidable object
+	*/
+	Collidable(const Collidable& other);
 	/**
 		Returns all the sides of the polygon, or an empty vector
 		if this collidable is a circle.
@@ -55,13 +61,34 @@ public:
 	/**
 		A pure virtual function, how this collidable reacts to the collision.
 
-		@param dir The direction from which the collision came.
+		@param other The other collidable with which the collision occured.
 	*/
-	virtual void collide(Collidable& other) = 0;
+	virtual void collide(Collidable& other,Physics::Vector otherVel) = 0;
+	/**
+		Returns the radius of the circle, if and only if this collidable is a circle.
+		Otherwise throws an exception.
+
+		@throws std::exception If this collidable isn't a circle
+		@return The radius of the circle.
+	*/
+	double getRadius() const;
+	/**
+		Returns the center of the circle, if and only if this collidable is a circle.
+		Otherwise throws an exception.
+
+		@throws std::exception If this collidable isn't a circle
+		@return The center of the circle.
+	*/
+	Point getCenter() const;
+	/**
+		Returns the velocity of this Collidable object, a pure virtual function.
+
+		@return The velocity of this Collidable object.
+	*/
+	virtual Physics::Vector getColVelocity() const = 0;
 private:
 	bool circle;
 	double radius;
-	Engine& engine;
 	Point center;
 	std::vector<Physics::Line> sides;
 

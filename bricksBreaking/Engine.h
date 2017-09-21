@@ -45,6 +45,12 @@ public:
 		@param obj The new GameObject to be added
 	*/
 	void addObject(GameObject& obj);
+	/**
+		Adds a collidable to the game
+
+		@param col The collidable to be added
+	*/
+	void addCollidable(Collidable* col);
 private:
 	SDL_mutex *lock; //A lock for synchronizing access to the game objects vector
 	std::vector<GameObject*> gameObjects; //The game objects vector

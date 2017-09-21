@@ -194,5 +194,8 @@
     <ClCompile Include="Event.cpp">
       <Filter>Resource Files\Source Files\Game\Observer</Filter>
     </ClCompile>
+    <ClCompile Include="Controllable.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -117,6 +117,9 @@
     <ClInclude Include="UnitTester1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="KeyboardListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -183,6 +186,9 @@
       <Filter>Resource Files\Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CollisionEvent.cpp">
+      <Filter>Resource Files\Source Files\Game\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="Event.cpp">
       <Filter>Resource Files\Source Files\Game\Observer</Filter>
     </ClCompile>
   </ItemGroup>

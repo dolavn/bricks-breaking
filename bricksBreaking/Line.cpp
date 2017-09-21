@@ -208,7 +208,7 @@ bool Line::intersect(Point center, double radius) {
 				segMin = &segLine;
 				segMax = &segCircle;
 			}
-			return segMax->second >= segMin->first;
+			return segMin->second >= segMax->first;
 		}
 		else {
 			double del = pow(radius, 2) - pow(getX() - x0, 2);

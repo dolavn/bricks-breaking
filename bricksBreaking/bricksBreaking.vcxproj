@@ -152,6 +152,7 @@
     <ClInclude Include="Ball.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Collidable.h" />
+    <ClInclude Include="CollidableLine.h" />
     <ClInclude Include="CollisionDetector.h" />
     <ClInclude Include="CollisionEvent.h" />
     <ClInclude Include="Color.h" />
@@ -181,6 +182,7 @@
     <ClCompile Include="bricksBreaking.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Collidable.cpp" />
+    <ClCompile Include="CollidableLine.cpp" />
     <ClCompile Include="CollisionDetector.cpp" />
     <ClCompile Include="CollisionEvent.cpp" />
     <ClCompile Include="Color.cpp" />

@@ -126,6 +126,9 @@
     <ClInclude Include="KeyPressedEvent.h">
       <Filter>Header Files\Game\Observer</Filter>
     </ClInclude>
+    <ClInclude Include="CollidableLine.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -202,6 +205,9 @@
     </ClCompile>
     <ClCompile Include="KeyPressedEvent.cpp">
       <Filter>Resource Files\Source Files\Game\Observer</Filter>
+    </ClCompile>
+    <ClCompile Include="CollidableLine.cpp">
+      <Filter>Resource Files\Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -32,6 +32,7 @@ public:
 		@param other The other observer object.
 		@return A deep copied copy of the other observer.
 	*/
+
 	Observer& operator=(const Observer& other); 
 	/**
 		Destroys this event object.

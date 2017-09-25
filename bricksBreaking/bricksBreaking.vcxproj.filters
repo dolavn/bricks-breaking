@@ -209,5 +209,8 @@
     <ClCompile Include="CollidableLine.cpp">
       <Filter>Resource Files\Source Files\Game</Filter>
     </ClCompile>
+    <ClCompile Include="KeyboardListener.cpp">
+      <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

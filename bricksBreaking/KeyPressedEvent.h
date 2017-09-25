@@ -19,7 +19,7 @@ namespace Game {
 
 		@param control - the controllablr object, key - the key that was pressed and controls the object
 		*/
-		KeyPressedEvent(Engine::Controllable& control, Engine::Key key);
+		KeyPressedEvent(Keyboard::Controllable& control, Keyboard::Key key);
 		/**
 		destructor
 		*/
@@ -33,8 +33,8 @@ namespace Game {
 		*/
 		void handle();
 	private:
-		Engine::Controllable& control;
-		Engine::Key key;
+		Keyboard::Controllable& control;
+		Keyboard::Key key;
 	};
 }
  

@@ -1,7 +1,10 @@
 #include "stdafx.h"
-# include "Controllable.h"
-using namespace Engine;
+#include "Controllable.h"
 
-Controllable::Controllable(const Controllable& other){
+namespace Keyboard {
+
+	Controllable::Controllable(const Controllable& other) {
+
+	}
 
 }

@@ -44,12 +44,20 @@ void Collidable::updateLocation(Point center) {
 //sets the side of this shape
 void Collidable::setSides(std::vector<Point>& points) {
 	sides = std::vector<Physics::Line>();
-	for (unsigned int i = 0; i < points.size(); i++) {
-		/* Creates a pair of points, between this point and next one.
-		The next point is either the point in the next index, or the point in index 0,
-		if we've reached the point in the last index. */
-		Physics::Line curr(points[i], points[(i + 1) % points.size()]);
-		sides.push_back(curr);
+	if (points.size() > 2) { //There is more than one line to be set.
+		for (unsigned int i = 0; i < points.size(); i++) {
+			/* Creates a pair of points, between this point and next one.
+			The next point is either the point in the next index, or the point in index 0,
+			if we've reached the point in the last index. */
+			Physics::Line curr(points[i], points[(i + 1) % points.size()]);
+			sides.push_back(curr);
+		}
+	}
+	else if(points.size()==2) { //This collidable consists only of one line
+		sides.push_back(Physics::Line(points[0], points[1]));
+	}
+	else {
+		throw std::exception("why?");
 	}
 }
 

@@ -2,12 +2,13 @@
 #include "Engine.h"
 #include "Rectangle.h"
 #include "Circle.h"
+#include "CollidableLine.h"
 #include "Vector.h"
 #include "Ball.h"
 #include <iostream>
 
 //Constructs a game engine object.
-Engine::Engine():graphics(640,480),obs(),detector(obs) {
+Engine::Engine():graphics(SCREEN_WIDTH,SCREEN_HEIGHT),obs(),detector(obs) {
 	lock = SDL_CreateMutex();
 	running = true;
 	graphics.addShape(Rectangle(10, 10, 50, 10, Colors::ORANGE));
@@ -18,6 +19,7 @@ Engine::Engine():graphics(640,480),obs(),detector(obs) {
 	ball2.setVelocity(Physics::Vector::getVectorCartesian(-3, 0));
 	addObject(ball1);
 	addObject(ball2);
+	addCollidable(new CollidableLine(Point(SCREEN_WIDTH-50, 0), Point(SCREEN_WIDTH-50, 400)));
 }
 
 //Starts the game
@@ -73,7 +75,7 @@ void Engine::startGame() {
 			waitTime = (1000 / TARGET_FPS) - finTicks+startTicks; 
 		}
 		SDL_Delay(waitTime);
-		running = c < 1000; //For testing only
+		//running = c < 1000; //For testing only
 	}
 	printTimes(c);
 	int i;
@@ -106,6 +108,9 @@ void Engine::printTimes(int c) {
 void Engine::onEvent(SDL_Event* Event) {
 	if (Event->type == SDL_QUIT)
 		running = false;
+	if (Event->type == SDL_KEYDOWN) {
+		std::cout << "key pressed" << std::endl;
+	}
 }
 
 //Adds an object to the game

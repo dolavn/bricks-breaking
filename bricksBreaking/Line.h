@@ -1,5 +1,6 @@
 #include "Point.h"
 #include "Vector.h"
+#include <iostream>
 
 #ifndef LINE_H_
 #define LINE_H_
@@ -137,6 +138,16 @@ namespace Physics {
 			@return The y value of the line when x is equal to the given x
 		*/
 		double getY(double x) const;
+
+		/**
+			operator<< overload, returns a reference to ostream after adding
+			a string representation of this line to a given ostream.
+
+			@param os The ostream before the addition.
+			@param line The line whose string representation should be added to the ostream.
+			@return The ostream after the string representation of the line was added to it.
+		*/
+		friend std::ostream& operator<<(std::ostream& os, const Line& line);
 	private:
 		double calcM(Point a, Point b);
 		double calcN(Point a, Point b);

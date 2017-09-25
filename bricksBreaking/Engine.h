@@ -21,6 +21,9 @@ const int TIMER_CYCLE = 25; //The cycle of the timer, in milliseconds
 	@author Dolav Nitay
 	@version 1.0
 */
+const int SCREEN_WIDTH = 640;
+const int SCREEN_HEIGHT = 480;
+
 class Engine {
 public:
 	/**

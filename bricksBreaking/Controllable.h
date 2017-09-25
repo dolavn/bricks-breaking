@@ -1,9 +1,10 @@
 #include "Engine.h"
+#include "KeyboardListener.h"
 
 #ifndef CONTROLLABLE_H_
 #define CONTROLLABLE_H_
 
-namespace Engine {
+namespace Keyboard {
 	class Controllable {
 		public:
 			/**
@@ -16,7 +17,7 @@ namespace Engine {
 			pure virtual function that reacts for every command from the keyboard 
 			and effects the actions of the controllable object
 			*/
-			virtual void react(Engine::Key key) = 0;
+			virtual void react(Keyboard::Key key) = 0;
 	private:
 
 	};

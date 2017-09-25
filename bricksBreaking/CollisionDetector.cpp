@@ -14,12 +14,17 @@ CollisionDetector::~CollisionDetector() {
 
 //adds a new collidable 
 void CollisionDetector::addCollidable(Collidable* collidable) {
+	if (!collidable->isCircle()) {
+		//std::vector<Physics::Line> sides = collidable->getSides();
+		//std::cout << sides[0] << std::endl;
+	}
 	collidables.push_back(collidable);
 }
 
 void CollisionDetector::detectCollisions() {
 	for (unsigned int i = 0; i < collidables.size(); i++) {
 		for (unsigned int j = i+1; j < collidables.size(); j++) {
+			//std::cout << "(" << i << "," << j << ")" << std::endl;
 			if (checkCollision(*(collidables[i]), *(collidables[j]))) {
 				obs.notifyEvent(Game::CollisionEvent(*collidables[i], *collidables[j]));
 			}
@@ -29,7 +34,7 @@ void CollisionDetector::detectCollisions() {
 
 //Checks collision between two collidables
 bool CollisionDetector::checkCollision(Collidable& colla, Collidable& collb) {
-	char flagA=CONVEX_FLAG, flagB=CONVEX_FLAG,flagAnd;
+	char flagA = CONVEX_FLAG, flagB = CONVEX_FLAG, flagAnd = 0;
 	if (colla.isCircle()) {
 		flagA = CIRCLE_FLAG;
 	}
@@ -37,12 +42,13 @@ bool CollisionDetector::checkCollision(Collidable& colla, Collidable& collb) {
 		flagB = CIRCLE_FLAG;
 	}
 	flagAnd = flagA & flagB;
-	if (flagAnd == CIRCLE_FLAG) {
+	if (colla.isCircle() && collb.isCircle()) {
 		return checkCollisionCirc(colla, collb);
 	}
-	if (flagAnd == CONVEX_FLAG) {
+	if (!colla.isCircle() && !collb.isCircle()) {
 		return checkCollisionConv(colla, collb);
 	}
+	//std::cout << (int)(flagAnd) << std::endl;   
 	return checkCollisionMix(colla, collb);
 }
 
@@ -85,6 +91,9 @@ bool CollisionDetector::checkCollisionMix(Collidable& colla, Collidable& collb) 
 	Point center = circle->getCenter();
 	double radius = circle->getRadius();
 	std::vector<Physics::Line> sides = convex->getSides();
+	if (sides.size() == 1) {
+		//std::cout << sides[0] << std::endl;
+	}
 	for (unsigned int i = 0; i < sides.size(); i++) {
 		Physics::Line& curr = sides[i];
 		if (curr.intersect(center, radius)) {

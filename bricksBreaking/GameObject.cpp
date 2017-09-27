@@ -5,12 +5,12 @@
 #include <iostream>
 
 //An empty constructor
-GameObject::GameObject():visible(),location(0,0),velocity(),shapesList(){
+GameObject::GameObject():visible(),location(0,0),velocity(new Physics::Vector(Physics::Vector::getVectorCartesian(0,0))),shapesList(){
 
 }
 
 //Constructor with initial location
-GameObject::GameObject(int x, int y) : velocity(), location(x, y),shapesList(){
+GameObject::GameObject(int x, int y) : velocity(new Physics::Vector(Physics::Vector::getVectorCartesian(0, 0))), location(x, y),shapesList(){
 
 }
 

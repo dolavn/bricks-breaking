@@ -129,6 +129,9 @@
     <ClInclude Include="CollidableLine.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="LineShape.h">
+      <Filter>Header Files\Graphics\Shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -211,6 +214,9 @@
     </ClCompile>
     <ClCompile Include="KeyboardListener.cpp">
       <Filter>Resource Files\Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LineShape.cpp">
+      <Filter>Resource Files\Source Files\Graphics\Shapes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

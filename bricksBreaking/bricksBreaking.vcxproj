@@ -166,6 +166,7 @@
     <ClInclude Include="KeyboardListener.h" />
     <ClInclude Include="KeyPressedEvent.h" />
     <ClInclude Include="Line.h" />
+    <ClInclude Include="LineShape.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Rectangle.h" />
@@ -195,6 +196,7 @@
     <ClCompile Include="KeyboardListener.cpp" />
     <ClCompile Include="KeyPressedEvent.cpp" />
     <ClCompile Include="Line.cpp" />
+    <ClCompile Include="LineShape.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Shape.cpp" />

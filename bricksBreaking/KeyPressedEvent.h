@@ -6,7 +6,7 @@
 #define KEYPRESSEDEVENT_H_
 
 namespace Game {
-	class KeyPressedEvent {
+	class KeyPressedEvent:public Event {
 	public:
 		/**
 		copy constructor

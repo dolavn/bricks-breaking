@@ -22,14 +22,27 @@ namespace Keyboard {
 		UNKNOWN_KEY
 	};
 
-	typedef std::pair<Keyboard::Key, std::vector<Controllable&>> controllablePair;
+	typedef std::vector<Keyboard::Controllable&> controllableVec;
+	typedef std::pair<Keyboard::Key, controllableVec> controllablePair;
 	typedef std::vector<controllablePair> pairsVector;
 
 	class KeyboardListener {
 	public:
 		KeyboardListener(Observer& obs);
-		void addControllable(Controllable& cont, std::vector<Keyboard::Key> vec);
+		/**
+		whenever during the game the player presses any key on the keyboard it will be reported to the observer
+		by creating a keyPressedEvent, that way the observer can handel the event and react to this in the game
+		(for example: moving the surface left when the left key is pressed)
+		*/
 		void reportKeyPress(SDL_Event& keyEvent);
+		/**
+		in case of adding a controllable item to the game, this method adds to the controlList
+		all the keys that are controling this object
+
+		@params cont - a Controllable object
+		vec - a vector with all the keys that are operating this object
+		*/
+		void addControllable(Controllable& cont, std::vector<Keyboard::Key> vec);
 	private:
 		Observer& obs;
 		pairsVector controlList;

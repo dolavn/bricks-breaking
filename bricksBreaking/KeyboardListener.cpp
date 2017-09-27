@@ -1,7 +1,11 @@
 #include "stdafx.h"
 #include "KeyboardListener.h"
+#include "KeyPressedEvent.h"
 
 namespace Keyboard {
+	KeyboardListener::KeyboardListener(Observer& obs) : obs(obs), controlList(){
+	}
+
 	void KeyboardListener::reportKeyPress(SDL_Event& keyEvent) {
 		Key keyPressed;
 		switch (keyEvent.key.keysym.sym) {
@@ -39,6 +43,26 @@ namespace Keyboard {
 			keyPressed = UNKNOWN_KEY;
 			break;
 		}
+		for (unsigned int i = 0; i < controlList.size(); i++) {
+			if (keyPressed == controlList[i].first) {
+				controllablePair& currPair = controlList[i];
+				controllableVec& currVec = currPair.second;
+				for (unsigned int j = 0; j < currVec.size(); j++) {
+					Game::KeyPressedEvent kpe = Game::KeyPressedEvent(currVec[j], keyPressed);
+					obs.notifyEvent(kpe);
+				}
+			}
+		}
+	} //reportKeyPress
 
-	}
+	void KeyboardListener::addControllable(Controllable& cont, std::vector<Keyboard::Key> vec) {
+		for (unsigned int i = 0; i < vec.size(); i++) {
+			for (unsigned j = 0; j < controlList.size(); j++) {
+				if (vec[i] == controlList[j].first) {
+					controlList[j].second.push_back(cont);
+				}
+			}
+		}
+	} //addControllable
+
 }

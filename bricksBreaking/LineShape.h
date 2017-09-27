@@ -35,7 +35,7 @@ namespace Shapes {
 
 			@return A pointer to a deep copied copy of this shape.
 		*/
-		virtual Shape* clone();
+		virtual Shape* clone() const;
 		/**
 			Draws this shape, using an SDL_Renderer object, a pure virtual function.
 
@@ -47,7 +47,7 @@ namespace Shapes {
 
 			@return A string representation of this shape.
 		*/
-		virtual std::string toString();
+		virtual std::string toString() const;
 	private:
 		Point a;
 		Point b;

@@ -79,16 +79,19 @@ void GameObject::draw(Graphics& graphics) {
 		if (currPair.first == nullptr) { //Checks if the current shape was deleted.
 			int ind = currPair.second;
 			graphics.removeShape(ind); //Removes the shape from the graphics object.
+			shapesList.erase(shapesList.begin() + i);
+			i = i - 1;
 		}
-		else {
-			int ind = currPair.second; 
-			if (ind != -1) { //This isn't the first time this shape is being drawn.
-				graphics.removeShape(ind); //Removes the previous copy of the shape from the graphics object.
-			}
-			//Adds the new copy of the current shape to the graphics object.
-			ind = graphics.addShape(*currPair.first);
-			currPair.second = ind; //Saves the index of this shape.
+	}
+	for (unsigned int i = 0; i < shapesList.size(); i = i + 1) {
+		std::pair<Shape*, int>& currPair = shapesList[i];
+		int ind = currPair.second; 
+		if (ind != -1) { //This isn't the first time this shape is being drawn.
+			graphics.removeShape(ind); //Removes the previous copy of the shape from the graphics object.
 		}
+		//Adds the new copy of the current shape to the graphics object.
+		ind = graphics.addShape(*currPair.first);
+		currPair.second = ind; //Saves the index of this shape.
 	}
 }
 

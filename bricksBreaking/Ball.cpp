@@ -41,7 +41,7 @@ void Ball::moveObject() {
 	//c.setCenter(getLocation().getX(), getLocation().getY());
 	clearShapes();
 	updateLocation(getLocation());
-	spriteIndex = addShape(Image("ball.png", getLocation().getX(), getLocation().getY(),BALL_RADIUS*2,BALL_RADIUS*2));
+	spriteIndex = addShape(Image("ball.png", getLocation().getX()-BALL_RADIUS, getLocation().getY()-BALL_RADIUS,BALL_RADIUS*2,BALL_RADIUS*2));
 }
 
 void Ball::collide(Collidable& other, Physics::Vector otherVel) {

@@ -1,14 +1,16 @@
 #include "stdafx.h"
 #include "CollidableLine.h"
+#include "LineShape.h"
 #include "Rectangle.h"
 
 using namespace Physics;
 
-CollidableLine::CollidableLine(Point a, Point b) :Collidable(getVector(a,b)) {
-	
+CollidableLine::CollidableLine(Point a, Point b) :GameObject((a.getX()+b.getX())/2,(a.getY()+b.getY())/2),Collidable(getVector(a,b)) {
+	Shapes::Line line = Shapes::Line(a, b, Colors::RED);
+	addShape(line);
 }
 
-CollidableLine::CollidableLine(const CollidableLine& other) : Collidable(other) {
+CollidableLine::CollidableLine(const CollidableLine& other) : Collidable(other),GameObject(other) {
 
 }
 
@@ -42,5 +44,4 @@ void CollidableLine::subscribe(Engine& engine) {
 }
 
 void CollidableLine::moveObject() {
-
 }

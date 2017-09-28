@@ -14,16 +14,15 @@ Engine::Engine():graphics(SCREEN_WIDTH,SCREEN_HEIGHT),obs(),detector(obs) {
 	graphics.addShape(Rectangle(10, 10, 50, 10, Colors::ORANGE));
 	timeTxt = graphics.addShape(Text(10, 50, "0", Colors::YELLOW));
 	Ball ball1 = Ball(100, 200);
-	//Ball ball2 = Ball(500, 200);
+	Ball ball2 = Ball(500, 200);
 	ball1.setVelocity(Physics::Vector::getVectorCartesian(3, 0));
-	//ball2.setVelocity(Physics::Vector::getVectorCartesian(-3, 0));
+	ball2.setVelocity(Physics::Vector::getVectorCartesian(-3, 0));
 	addObject(ball1);
-	//addObject(ball2);
-	addObject(CollidableLine(Point(SCREEN_WIDTH/2, 0), Point(SCREEN_WIDTH/2, 400)));
-
-
-	int a = 5;
-	int& b = a;
+	addObject(ball2);
+	addObject(CollidableLine(Point(0, 0), Point(SCREEN_WIDTH,0)));
+	addObject(CollidableLine(Point(SCREEN_WIDTH, 0), Point(SCREEN_WIDTH, SCREEN_HEIGHT)));
+	addObject(CollidableLine(Point(SCREEN_WIDTH, SCREEN_HEIGHT), Point(0, SCREEN_HEIGHT)));
+	addObject(CollidableLine(Point(0, SCREEN_HEIGHT), Point(0, 0)));
 }
 
 //Starts the game

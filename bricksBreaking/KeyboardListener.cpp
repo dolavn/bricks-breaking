@@ -48,14 +48,14 @@ namespace Keyboard {
 				controllablePair& currPair = controlList[i];
 				controllableVec& currVec = currPair.second;
 				for (unsigned int j = 0; j < currVec.size(); j++) {
-					Game::KeyPressedEvent kpe = Game::KeyPressedEvent(currVec[j], keyPressed);
+					Game::KeyPressedEvent kpe = Game::KeyPressedEvent(*currVec[j], keyPressed);
 					obs.notifyEvent(kpe);
 				}
 			}
 		}
 	} //reportKeyPress
 
-	void KeyboardListener::addControllable(Controllable& cont, std::vector<Keyboard::Key> vec) {
+	void KeyboardListener::addControllable(Controllable* cont, std::vector<Keyboard::Key> vec) {
 		for (unsigned int i = 0; i < vec.size(); i++) {
 			for (unsigned j = 0; j < controlList.size(); j++) {
 				if (vec[i] == controlList[j].first) {

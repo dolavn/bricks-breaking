@@ -4,9 +4,10 @@
 #ifndef KEYBOARD_LISTENER_H_
 #define KEYBOARD_LISTENER_H_
 
-class Controllable;
 
 namespace Keyboard {
+
+	class Controllable;
 
 	enum Key {
 		KEY_PRESSED_UP,
@@ -22,7 +23,7 @@ namespace Keyboard {
 		UNKNOWN_KEY
 	};
 
-	typedef std::vector<Keyboard::Controllable&> controllableVec;
+	typedef std::vector<Keyboard::Controllable*> controllableVec;
 	typedef std::pair<Keyboard::Key, controllableVec> controllablePair;
 	typedef std::vector<controllablePair> pairsVector;
 
@@ -42,7 +43,7 @@ namespace Keyboard {
 		@params cont - a Controllable object
 		vec - a vector with all the keys that are operating this object
 		*/
-		void addControllable(Controllable& cont, std::vector<Keyboard::Key> vec);
+		void addControllable(Controllable* cont, std::vector<Keyboard::Key> vec);
 	private:
 		Observer& obs;
 		pairsVector controlList;

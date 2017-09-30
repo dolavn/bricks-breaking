@@ -47,8 +47,10 @@ public:
 		How the ball reacts to a collision.
 
 		@param other The other collidable
+		@param velocity This collidable's velocity prior to the collision
+		@param otherVel The other collidable's velocity prior to the collision
 	*/
-	virtual void collide(Collidable& other, Physics::Vector otherVel);
+	virtual void collide(Collidable& other, Physics::Vector velocity,Physics::Vector otherVel);
 	/**
 		Returns the velocity of this Collidable object.
 
@@ -79,9 +81,10 @@ public:
 	colliding with this collidable from a given point.
 
 	@param otherLoc The location of the other collidable
+	@param otherVel The other collidable's velocity
 	@return A vector perpendicular to this collidable's surface
 	*/
-	virtual Physics::Vector getColNormal(Point otherLoc) const;
+	virtual Physics::Vector getColNormal(Point otherLoc,Physics::Vector otherVel) const;
 private:
 	
 	virtual void moveObject();

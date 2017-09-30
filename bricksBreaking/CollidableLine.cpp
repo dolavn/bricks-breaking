@@ -18,11 +18,11 @@ CollidableLine::~CollidableLine() {
 	delete(points);
 }
 
-void CollidableLine::collide(Collidable& other, Physics::Vector otherVel) {
+void CollidableLine::collide(Collidable& other, Physics::Vector velocity,Physics::Vector otherVel) {
 
 }
 
-Physics::Vector CollidableLine::getColNormal(Point otherLoc) const {
+Physics::Vector CollidableLine::getColNormal(Point otherLoc,Physics::Vector otherVel) const {
 	Physics::Vector lineVec = line.getVector();
 	double x1, y1;
 	bool rightOf = false;

@@ -18,6 +18,6 @@ CollisionEvent* CollisionEvent::clone() {
 void CollisionEvent::handle() {
 	Physics::Vector vel1 = object1.getColVelocity();
 	Physics::Vector vel2 = object2.getColVelocity();
-	object1.collide(object2, vel2);
-	object2.collide(object1, vel1);
+	object1.collide(object2, vel1,vel2);
+	object2.collide(object1, vel2,vel1);
 }

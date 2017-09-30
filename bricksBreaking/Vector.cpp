@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Vector.h"
+#include "Circle.h"
 #include <iostream>
 #include <sstream>
 #include <math.h>
@@ -53,6 +54,12 @@ namespace Physics {
 		return getVectorCartesian(x*scalar, y*scalar);
 	}
 
+	Vector Vector::rotate(double angle) const {
+		double x1 = x*cos(angle) + y*sin(angle);
+		double y1 = -x*sin(angle) + y*cos(angle);
+		return Physics::Vector::getVectorCartesian(x1, y1);
+	}
+
 	//Returns a vector that goes from one point to another
 	Vector Vector::getVectorPoints(Point a, Point b) {
 		double x = b.getX() - a.getX();
@@ -84,7 +91,11 @@ namespace Physics {
 
 	//Returns the angle of this vector
 	double Vector::getAngle() const {
-		return atan(x / y);
+		double angle = atan(abs(x) / abs(y));
+		if (y >= 0 && x<0)	angle = angle + PI / 2;
+		if (x < 0 && y < 0)	angle = angle + PI;
+		if (x >= 0 && y < 0)	angle = angle + 3 * PI / 2;
+		return angle;
 	}
 
 	//Returns the angle between this vector and another one

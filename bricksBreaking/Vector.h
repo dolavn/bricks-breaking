@@ -88,6 +88,13 @@ namespace Physics {
 		*/
 		Vector multByScalar(double scalar) const;
 		/**
+			Returns a vector, which is this vector, roatated by a given angle.
+
+			@param angle The rotation angle
+			@return A vector, which is this vector rotated by a given angle.
+		*/
+		Vector rotate(double angle) const;
+		/**
 			Returns a string representation of this vector.
 
 			@return A string representation of this vector

@@ -44,10 +44,16 @@ void Ball::moveObject() {
 	spriteIndex = addShape(Image("ball.png", getLocation().getX()-BALL_RADIUS, getLocation().getY()-BALL_RADIUS,BALL_RADIUS*2,BALL_RADIUS*2));
 }
 
-void Ball::collide(Collidable& other, Physics::Vector otherVel) {
-	Physics::Vector norm = other.getColNormal(getLocation());
-	Physics::Vector newVel = norm.multByScalar(getVelocity().getSize());
-	changeVelocity(newVel);
+void Ball::collide(Collidable& other, Physics::Vector velocity,Physics::Vector otherVel) {
+	Physics::Vector norm = other.getColNormal(getLocation(),getVelocity());
+	/*Physics::Vector rotated = velocity.rotate(norm.getAngle());
+	Physics::Vector ans = rotated.rotate(6.28-norm.getAngle());*/
+	double prod = velocity.getX()*norm.getX() + velocity.getY()*norm.getY();
+	double xR = velocity.getX() - 2 * prod*norm.getX();
+	double yR = velocity.getY() - 2 * prod*norm.getY();
+	Physics::Vector ans = Physics::Vector::getVectorCartesian(xR, yR);
+	Physics::Vector newVel = norm.multByScalar(velocity.getSize());
+	changeVelocity(ans);
 }
 
 void Ball::setVelocity(Physics::Vector velocity) {
@@ -62,7 +68,7 @@ Physics::Vector Ball::getColVelocity() const {
 	return getVelocity();
 }
 
-Physics::Vector Ball::getColNormal(Point otherLoc) const {
+Physics::Vector Ball::getColNormal(Point otherLoc,Physics::Vector otherVel) const {
 	Physics::Vector temp = Physics::Vector::getVectorCartesian(otherLoc.getX()- getLocation().getX(), otherLoc.getY()- getLocation().getY());
 	return temp.getNormal();
 }

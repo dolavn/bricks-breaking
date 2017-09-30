@@ -35,9 +35,10 @@ public:
 		Handles collision with another Collidable object.
 
 		@param other The other Collidable object
-		@param otherVel The velocity of the other Collidable prior to the collision.
+		@param velocity This collidable's velocity prior to the collision
+		@param otherVel The other collidable's velocity prior to the collision
 	*/
-	virtual void collide(Collidable& other, Physics::Vector otherVel);
+	virtual void collide(Collidable& other, Physics::Vector velocity,Physics::Vector otherVel);
 	/**
 		Returns a pointer to a deep copied copy of this collidable line.
 
@@ -61,9 +62,10 @@ public:
 	colliding with this collidable from a given point.
 
 	@param otherLoc The location of the other collidable
+	@param otherVel The other collidable's velocity
 	@return A vector perpendicular to this collidable's surface
 	*/
-	virtual Physics::Vector getColNormal(Point otherLoc) const;
+	virtual Physics::Vector getColNormal(Point otherLoc,Physics::Vector otherVel) const;
 protected:
 	virtual void moveObject();
 private:

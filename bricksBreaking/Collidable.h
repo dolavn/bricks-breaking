@@ -62,8 +62,10 @@ public:
 		A pure virtual function, how this collidable reacts to the collision.
 
 		@param other The other collidable with which the collision occured.
+		@param velocity This collidable's velocity prior to the collision
+		@param otherVel The other collidable's velocity prior to the collision
 	*/
-	virtual void collide(Collidable& other,Physics::Vector otherVel) = 0;
+	virtual void collide(Collidable& other,Physics::Vector velocity,Physics::Vector otherVel) = 0;
 	/**
 		Returns the radius of the circle, if and only if this collidable is a circle.
 		Otherwise throws an exception.
@@ -91,9 +93,10 @@ public:
 		colliding with this collidable from a given point.
 
 		@param otherLoc The location of the other collidable
+		@param otherVel The other collidable's velocity
 		@return A vector perpendicular to this collidable's surface 
 	*/
-	virtual Physics::Vector getColNormal(Point otherLoc) const = 0;
+	virtual Physics::Vector getColNormal(Point otherLoc,Physics::Vector otherVel) const = 0;
 private:
 	bool circle;
 	double radius;

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Image.h"
+#include <algorithm>
 #include <iostream>
 #include <SDL_image.h>
 
@@ -35,8 +36,8 @@ void Image::draw(Graphics& graphics) {
 		texture = graphics.getTexture(filePath);
 	}
 	SDL_Rect viewPort;
-	viewPort.x = x;
-	viewPort.y = y;
+	viewPort.x = std::max(0,x);
+	viewPort.y = std::max(0,y);
 	if (width == -1 && height == -1) {
 		viewPort.w = texture->getWidth() / 2;
 		viewPort.h = texture->getHeight() / 2;

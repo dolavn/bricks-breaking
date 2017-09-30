@@ -116,7 +116,7 @@ protected:
 
 		@return The location of this gameObject.
 	*/
-	Point getLocation();
+	Point getLocation() const;
 	/**
 		Sets the location of this gameObject.
 		

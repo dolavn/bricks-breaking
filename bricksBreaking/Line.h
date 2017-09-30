@@ -52,7 +52,7 @@ namespace Physics {
 
 			@return A unit vector with the direction of this line
 		*/
-		Physics::Vector getVector();
+		Physics::Vector getVector() const;
 		/**
 			Returns the slope of this line, that is, the m in the equation y=mx+n.
 
@@ -138,6 +138,15 @@ namespace Physics {
 			@return The y value of the line when x is equal to the given x
 		*/
 		double getY(double x) const;
+		/**
+			Returns the x value of the line when y is equal to a given y. Can only call
+			this method on a non-vertical line, throws an exception otherwise.
+
+			@param y A given y value
+			@throws std::exception If this line is vertical.
+			@return The x value of the line when y is equal to the given y
+		*/
+		double getX(double y) const;
 
 		/**
 			operator<< overload, returns a reference to ostream after adding

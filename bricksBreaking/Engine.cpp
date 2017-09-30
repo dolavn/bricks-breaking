@@ -13,7 +13,7 @@ Engine::Engine():graphics(SCREEN_WIDTH,SCREEN_HEIGHT),obs(),detector(obs) {
 	running = true;
 	graphics.addShape(Rectangle(10, 10, 50, 10, Colors::ORANGE));
 	timeTxt = graphics.addShape(Text(10, 50, "0", Colors::YELLOW));
-	Ball ball1 = Ball(100, 200);
+	Ball ball1 = Ball(100, 250);
 	Ball ball2 = Ball(500, 200);
 	ball1.setVelocity(Physics::Vector::getVectorCartesian(3, 0));
 	ball2.setVelocity(Physics::Vector::getVectorCartesian(-3, 0));

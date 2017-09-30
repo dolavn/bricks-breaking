@@ -73,6 +73,15 @@ public:
 		@param velocity The new ball's velocity
 	*/
 	void setVelocity(Physics::Vector velocity);
+
+	/**
+	Returns a vector, perpendicular to this collidable's surface , for a collidable
+	colliding with this collidable from a given point.
+
+	@param otherLoc The location of the other collidable
+	@return A vector perpendicular to this collidable's surface
+	*/
+	virtual Physics::Vector getColNormal(Point otherLoc) const;
 private:
 	
 	virtual void moveObject();

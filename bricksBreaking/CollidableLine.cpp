@@ -5,12 +5,12 @@
 
 using namespace Physics;
 
-CollidableLine::CollidableLine(Point a, Point b) :GameObject((a.getX()+b.getX())/2,(a.getY()+b.getY())/2),Collidable(getVector(a,b)) {
+CollidableLine::CollidableLine(Point a, Point b) :GameObject((a.getX()+b.getX())/2,(a.getY()+b.getY())/2),Collidable(getVector(a,b)),line(a,b) {
 	Shapes::Line line = Shapes::Line(a, b, Colors::RED);
 	addShape(line);
 }
 
-CollidableLine::CollidableLine(const CollidableLine& other) : Collidable(other),GameObject(other) {
+CollidableLine::CollidableLine(const CollidableLine& other) : Collidable(other),GameObject(other),line(other.line) {
 
 }
 
@@ -20,6 +20,27 @@ CollidableLine::~CollidableLine() {
 
 void CollidableLine::collide(Collidable& other, Physics::Vector otherVel) {
 
+}
+
+Physics::Vector CollidableLine::getColNormal(Point otherLoc) const {
+	Physics::Vector lineVec = line.getVector();
+	double x1, y1;
+	bool rightOf = false;
+	if (line.isVertical()) {
+		x1 = 1, y1 = 0;
+		if (otherLoc.getX() < line.getX()) {
+			x1 = -1;
+		}
+		return Physics::Vector::getVectorCartesian(x1, y1);
+	}
+	else {
+		y1 = 1, x1 = -lineVec.getY() / lineVec.getX();
+		if (otherLoc.getX() < line.getX(otherLoc.getY())) {
+			y1 = y1 *-1;
+			x1 = x1 *-1;
+		}
+		return Physics::Vector::getVectorCartesian(x1, y1).getNormal();
+	}
 }
 
 Physics::Vector CollidableLine::getColVelocity() const{

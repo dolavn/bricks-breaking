@@ -86,6 +86,14 @@ public:
 		@return The velocity of this Collidable object.
 	*/
 	virtual Physics::Vector getColVelocity() const = 0;
+	/**
+		Returns a vector, perpendicular to this collidable's surface , for a collidable
+		colliding with this collidable from a given point.
+
+		@param otherLoc The location of the other collidable
+		@return A vector perpendicular to this collidable's surface 
+	*/
+	virtual Physics::Vector getColNormal(Point otherLoc) const = 0;
 private:
 	bool circle;
 	double radius;

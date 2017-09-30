@@ -124,7 +124,7 @@ void GameObject::changeVisibilty(bool visibile) {
 }
 
 //Returns the location of this gameObject
-Point GameObject::getLocation() {
+Point GameObject::getLocation() const{
 	return location;
 }
 

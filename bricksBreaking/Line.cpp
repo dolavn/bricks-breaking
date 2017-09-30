@@ -45,7 +45,7 @@ namespace Physics {
 		}
 	}
 
-	Vector Line::getVector() {
+	Vector Line::getVector() const{
 		return Vector::getVectorCartesian(1, m);
 	}
 
@@ -251,6 +251,15 @@ namespace Physics {
 		}
 		else {
 			return m*x + n;
+		}
+	}
+
+	double Line::getX(double y) const {
+		if (vert) {
+			throw std::exception("Can't call this method on a vertical line");
+		}
+		else {
+			return (y - n) / m;
 		}
 	}
 

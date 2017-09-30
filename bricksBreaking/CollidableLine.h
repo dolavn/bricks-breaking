@@ -56,9 +56,18 @@ public:
 		@return The velocity of this Collidable
 	*/
 	virtual Physics::Vector getColVelocity() const;
+	/**
+	Returns a vector, perpendicular to this collidable's surface , for a collidable
+	colliding with this collidable from a given point.
+
+	@param otherLoc The location of the other collidable
+	@return A vector perpendicular to this collidable's surface
+	*/
+	virtual Physics::Vector getColNormal(Point otherLoc) const;
 protected:
 	virtual void moveObject();
 private:
+	Physics::Line line;
 	std::vector<Point>* points;
 	//Returns a vector containing the points a and b
 	std::vector<Point>& getVector(Point a, Point b);

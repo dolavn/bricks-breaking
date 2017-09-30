@@ -75,6 +75,19 @@ namespace Physics {
 		*/
 		double getAngle() const;
 		/**
+			Returns a vector, with this vector's direction but with size 1.
+
+			@return A vector, with this vector's direction, but with size 1.
+		*/
+		Vector getNormal() const;
+		/**
+			Returns a new vector, which is this vector, multiplied by a scalar size.
+
+			@param scalar The scalar size.
+			@return The vector, given by the multiplication of this vector and a scalar size.
+		*/
+		Vector multByScalar(double scalar) const;
+		/**
 			Returns a string representation of this vector.
 
 			@return A string representation of this vector

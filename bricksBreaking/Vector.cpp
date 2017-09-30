@@ -42,6 +42,17 @@ namespace Physics {
 		return Vector(x, y);
 	}
 
+	//Returns a vector of size 1
+	Vector Vector::getNormal() const {
+		double normalizer = sqrt(pow(x, 2) + pow(y, 2));
+		return getVectorCartesian(x / normalizer, y / normalizer);
+	}
+
+	//Multiplies this vector with a scalar size and returns the result
+	Vector Vector::multByScalar(double scalar) const {
+		return getVectorCartesian(x*scalar, y*scalar);
+	}
+
 	//Returns a vector that goes from one point to another
 	Vector Vector::getVectorPoints(Point a, Point b) {
 		double x = b.getX() - a.getX();

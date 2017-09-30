@@ -45,7 +45,9 @@ void Ball::moveObject() {
 }
 
 void Ball::collide(Collidable& other, Physics::Vector otherVel) {
-	changeVelocity(otherVel);
+	Physics::Vector norm = other.getColNormal(getLocation());
+	Physics::Vector newVel = norm.multByScalar(getVelocity().getSize());
+	changeVelocity(newVel);
 }
 
 void Ball::setVelocity(Physics::Vector velocity) {
@@ -58,5 +60,10 @@ void Ball::subscribe(Engine& engine) {
 
 Physics::Vector Ball::getColVelocity() const {
 	return getVelocity();
+}
+
+Physics::Vector Ball::getColNormal(Point otherLoc) const {
+	Physics::Vector temp = Physics::Vector::getVectorCartesian(otherLoc.getX()- getLocation().getX(), otherLoc.getY()- getLocation().getY());
+	return temp.getNormal();
 }
 

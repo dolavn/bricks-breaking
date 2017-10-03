@@ -6,6 +6,7 @@
 #include "GameObject.h"
 #include "CollisionDetector.h"
 #include "Observer.h"
+#include "KeyboardListener.h"
 #include <sstream>
 #include <stdint.h>
 #include <vector>
@@ -54,11 +55,18 @@ public:
 		@param col The collidable to be added
 	*/
 	void addCollidable(Collidable* col);
+	/**
+		Returns the KeyboardListener of this engine.
+
+		@return The KeyboardListener of this engine.
+	*/
+	Keyboard::KeyboardListener& getListener();
 private:
 	SDL_mutex *lock; //A lock for synchronizing access to the game objects vector
 	std::vector<GameObject*> gameObjects; //The game objects vector
 	Observer obs;
 	CollisionDetector detector;
+	Keyboard::KeyboardListener listener;
 	void runGame(); //Runs the game
 	void onEvent(SDL_Event* Event); //handles sdl event
 	static Uint32 timerCallBack(Uint32 interval, void *param); //Call back function to be called each timer cycle

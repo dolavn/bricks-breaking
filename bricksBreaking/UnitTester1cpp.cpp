@@ -3,9 +3,11 @@
 #include "Observer.h"
 #include "UnitTester1.h"
 #include "Line.h"
+#include "KeyboardListener.h"
 #include <sstream>
 #include "Engine.h"
 #include <iostream>
+
 
 CircleColl::CircleColl(Point center, double radius) :Collidable(center, radius) {
 
@@ -27,6 +29,8 @@ int main(int argc, char **argv) {
 	Engine e = Engine();
 	e.startGame();
 	return 0;
+
+
 
 	/*
 	using namespace Physics;
@@ -74,8 +78,8 @@ int main(int argc, char **argv) {
 	}
 	else {
 		std::cout << "doesn't intersect" << std::endl;
-	}*//*
+	}*/
 	int fin;
 	std::cin >> fin;
-	return 0;*/
+	return 0;
 }

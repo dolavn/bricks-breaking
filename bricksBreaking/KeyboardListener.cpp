@@ -57,10 +57,17 @@ namespace Keyboard {
 
 	void KeyboardListener::addControllable(Controllable* cont, std::vector<Keyboard::Key> vec) {
 		for (unsigned int i = 0; i < vec.size(); i++) {
+			bool found = false;
 			for (unsigned j = 0; j < controlList.size(); j++) {
 				if (vec[i] == controlList[j].first) {
 					controlList[j].second.push_back(cont);
+					found = true;
 				}
+			}
+			if (!found) {
+				controllablePair newPair = controllablePair(vec[i], std::vector<Controllable*>());
+				newPair.second.push_back(cont);
+				controlList.push_back(newPair);
 			}
 		}
 	} //addControllable

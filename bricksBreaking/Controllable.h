@@ -8,14 +8,20 @@ namespace Keyboard {
 	class Controllable {
 		public:
 			/**
-			Copy constructor, deep copies another Controllable object.
+				Creates a new Controllable object.
+			*/
+			Controllable();
+			/**
+				Copy constructor, deep copies another Controllable object.
 
-			@param other The other Controllable object
+				@param other The other Controllable object
 			*/
 			Controllable(const Controllable& other);
 			/**
-			pure virtual function that reacts for every command from the keyboard 
-			and effects the actions of the controllable object
+				Pure virtual function that reacts for every command from the keyboard 
+				and effects the actions of the controllable object
+
+				@param key The key that was pressed.
 			*/
 			virtual void react(Keyboard::Key key) = 0;
 	private:

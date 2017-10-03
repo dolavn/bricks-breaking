@@ -168,6 +168,7 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="LineShape.h" />
     <ClInclude Include="Observer.h" />
+    <ClInclude Include="PlayerSurface.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Shape.h" />
@@ -198,6 +199,7 @@
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="LineShape.cpp" />
     <ClCompile Include="Observer.cpp" />
+    <ClCompile Include="PlayerSurface.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="Rectangle.cpp" />

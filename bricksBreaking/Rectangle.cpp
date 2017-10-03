@@ -9,7 +9,6 @@ Rectangle::Rectangle(int x, int y, int width, int height, Color color) :Shape(co
 
 //Deep copies an existing rectangle
 Rectangle::Rectangle(const Rectangle& other) : Shape(other), x(other.x), y(other.y), width(other.width), height(other.height) {
-
 }
 
 //Assignment operator
@@ -45,6 +44,6 @@ void Rectangle::draw(Graphics& graphics) {
 	SDL_Renderer& renderer = graphics.getRenderer();
 	Color color = getColor();
 	SDL_SetRenderDrawColor(&renderer, color.getRed(), color.getGreen(), color.getBlue(), 255); //Sets the render color.
-	SDL_Rect p = { x,y,x + width,y + height };
+	SDL_Rect p = { x,y,width,height };
 	SDL_RenderFillRect(&renderer, &p);
 }

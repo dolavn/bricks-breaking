@@ -5,20 +5,23 @@
 #include "CollidableLine.h"
 #include "Vector.h"
 #include "Ball.h"
+#include "PlayerSurface.h"
 #include <iostream>
 
 //Constructs a game engine object.
-Engine::Engine():graphics(SCREEN_WIDTH,SCREEN_HEIGHT),obs(),detector(obs) {
+Engine::Engine():graphics(SCREEN_WIDTH,SCREEN_HEIGHT),obs(),detector(obs),listener(Keyboard::KeyboardListener(obs)) {
 	lock = SDL_CreateMutex();
 	running = true;
 	graphics.addShape(Rectangle(10, 10, 50, 10, Colors::ORANGE));
 	timeTxt = graphics.addShape(Text(10, 50, "0", Colors::YELLOW));
 	Ball ball1 = Ball(100, 250);
 	Ball ball2 = Ball(500, 200);
+	PlayerSurface surf = PlayerSurface(100, 400);
 	ball1.setVelocity(Physics::Vector::getVectorCartesian(3, 0));
 	ball2.setVelocity(Physics::Vector::getVectorCartesian(-3, 0));
 	addObject(ball1);
 	addObject(ball2);
+	addObject(surf);
 	addObject(CollidableLine(Point(0, 0), Point(SCREEN_WIDTH,0)));
 	addObject(CollidableLine(Point(SCREEN_WIDTH, 0), Point(SCREEN_WIDTH, SCREEN_HEIGHT)));
 	addObject(CollidableLine(Point(SCREEN_WIDTH, SCREEN_HEIGHT), Point(0, SCREEN_HEIGHT)));
@@ -112,8 +115,13 @@ void Engine::onEvent(SDL_Event* Event) {
 	if (Event->type == SDL_QUIT)
 		running = false;
 	if (Event->type == SDL_KEYDOWN) {
-		std::cout << "key pressed" << std::endl;
+		listener.reportKeyPress(*Event);
 	}
+}
+
+//Getter for KeyboardListener
+Keyboard::KeyboardListener& Engine::getListener() {
+	return listener;
 }
 
 //Adds an object to the game

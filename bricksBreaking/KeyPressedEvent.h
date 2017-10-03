@@ -9,27 +9,27 @@ namespace Game {
 	class KeyPressedEvent:public Event {
 	public:
 		/**
-		copy constructor
+			copy constructor
 
-		@param other The other KeyPressedEvent object
+			@param other The other KeyPressedEvent object
 		*/
 		KeyPressedEvent(const KeyPressedEvent& other);
 		/**
-		constructor
+			constructor
 
-		@param control - the controllablr object, key - the key that was pressed and controls the object
+			@param control - the controllablr object, key - the key that was pressed and controls the object
 		*/
 		KeyPressedEvent(Keyboard::Controllable& control, Keyboard::Key key);
 		/**
-		destructor
+			destructor
 		*/
 		virtual ~KeyPressedEvent();
 		/**
-		execute the pure virtual method of Event. returns a clone of this object
+			execute the pure virtual method of Event. returns a clone of this object
 		*/
 		KeyPressedEvent* clone();
 		/**
-		execute the pure virtual method of Event. handels the event
+			execute the pure virtual method of Event. handels the event
 		*/
 		void handle();
 	private:

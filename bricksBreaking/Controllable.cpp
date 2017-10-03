@@ -3,6 +3,10 @@
 
 namespace Keyboard {
 
+	Controllable::Controllable() {
+
+	}
+
 	Controllable::Controllable(const Controllable& other) {
 
 	}
